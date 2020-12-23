@@ -26,11 +26,13 @@
                  </p> 
                 
             </td>
-            <td>{{formattedPrice}}</td>
+            <td>{{this.cart_item_data.price * this.cart_item_data.quantity}} руб. </td>
             <td><button @click="deleteFromCart"><v-icon>mdi-delete</v-icon></button></td>
             </tr>
 </template>
 <script>
+import formattedPrice from "../../filters/price-format";
+
 export default {
     name: "v-cart-item",
     props: {
@@ -46,9 +48,11 @@ export default {
     },
     filters: {
     //   toFix,
-    //   formattedPrice
+      formattedPrice
     },
-    computed: {},
+    computed: {
+      
+    },
     methods: {
       decrementItem() {
         this.$emit('decrement')

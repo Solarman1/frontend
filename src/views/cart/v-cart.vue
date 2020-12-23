@@ -17,20 +17,20 @@
         <template v-slot:default>
         <thead>
             <tr>
-            <th class="text-left">
+            <th class="text-center">
                
             </th>
-            <th class="text-left">
-               
+            <th class="text-center">
+               Наименование
             </th>
-            <th class="text-left">
-               
+            <th class="text-center">
+               Цена продукта
             </th>
             <th class="text-center">
                Количество
             </th>
             <th class="text-center">
-               
+               Общая цена
             </th>
             <th class="text-left">
                
@@ -82,8 +82,7 @@
                 <v-row>
                    <v-col md="5"> 
                      <v-text-field
-                    v-model="name"
-                    
+                    v-model="formData.name" 
                     :rules="nameRules"
                     name="Name"
                     label="Имя"
@@ -94,7 +93,7 @@
 
                   <v-col md="5">
                     <v-text-field
-                    v-model="phone"
+                    v-model="formData.phone"
                     :counter="12"
                     :rules="phoneRules"
                     name="Phone"
@@ -108,7 +107,7 @@
 
                   <v-col md="5"> 
                     <v-text-field
-                    v-model="adres"
+                    v-model="formData.adres"
                     :rules="adresRules"
                     name="Adres"
                     label="Улица, дом/подьезд/квартира/офис"
@@ -118,7 +117,7 @@
                   
                   <v-col md="5">
                     <v-text-field
-                    v-model="email"
+                    v-model="formData.email"
                     :rules="emailRules"
                     name="Email"
                     label="E-mail"
@@ -131,7 +130,7 @@
                 <v-row>
                   <v-col md="2">
                     <v-text-field
-                        v-model="deliveryTime"
+                        v-model="formData.deliveryTime"
                         :rules="deliveryTimeRules"
                         name="DeliveryTime"
                         color="deep-purple"
@@ -141,7 +140,7 @@
 
                   <v-col md="2">
                     <v-text-field
-                        v-model="personsCount"
+                        v-model="formData.personsCount"
                         name="PersonsCount"
                         color="deep-purple"
                         label="Количество персон(приборы)"
@@ -155,6 +154,7 @@
 
                   <v-col md="10">
                   <v-textarea
+                      v-model="formData.description"
                       name="Description"
                       filled
                       label="Комментарий к заказу"
@@ -167,7 +167,7 @@
                 </v-container>
 
           <v-container fluid>
-            <v-radio-group v-model="radios">
+            <v-radio-group v-model="formData.paymentInfo">
               <template v-slot:label>
                 <div>Способ оплаты</div>
               </template>
@@ -176,12 +176,12 @@
                   <div>Расчет на сайте</div>
                 </template>
               </v-radio>
-              <v-radio @click="paymentCash" value="2">
+              <v-radio @click="paymentCashFalse" value="2">
                 <template v-slot:label>
                   <div>Расчет по карте курьеру</div>
                 </template>
               </v-radio>
-              <v-radio @click="paymentCashFalse" value="3">
+              <v-radio @click="paymentCash" value="3">
                 <template v-slot:label>
                   <div>Расчет наличными курьеру</div>
                 </template>
@@ -192,6 +192,7 @@
                   <v-col md="1">
                   Потребуется сдача? 
                     <v-text-field
+                        v-model="formData.sdacha"
                         name="Sdacha"
                         color="deep-purple"
                         label="руб."
@@ -248,8 +249,9 @@
                     color="success"
                     class="mr-4"
                     @click="validate"
-                    type="submit"
+                    
                     >
+                    <!-- type="submit" -->
                     Заказать
                     </v-btn>
 
@@ -261,6 +263,7 @@
 <script>
 import vCartItem from './v-cart-item'
 import {mapActions} from 'vuex'
+import axios from "axios"
 
 export default {
  name: "v-cart",
@@ -278,39 +281,38 @@ export default {
     data() {
       return {
         offlineCash: false,
-
         valid: true,
+        formData: {
+          name  : '',
+          phone : '',
+          adres : '',
+          email : '',
+          sdacha: '',
+          deliveryTime  : '',
+          personsCount  : '',
+          paymentInfo   : '',
+          description   : '',
+        },
 
-      deliveryTime: '',
+      
       deliveryTimeRules: [
         v => !!v || 'Введите желаемое время доставки',
-      ],
-      personsCount: '',
-      adres: '',
+      ],   
       adresRules: [
         v => !!v || 'Введите адрес доставки',
       ],
-      phone: '',
       phoneRules: [
         v => !!v || 'Введите ваш номер',
       ],
-      name: '',
       nameRules: [
         v => !!v || 'Введите имя',
         v => (v && v.length <= 40) || 'Name must be less than 10 characters',
-      ],
-      email: '',
+      ],  
       emailRules: [
         v => !!v || 'E-mail поле обязательно для заполнения',
         v => /.+@.+\..+/.test(v) || 'Введите валидный - E-mail адрес',
       ],
       select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
       checkbox: false,
       }
     },
@@ -319,22 +321,24 @@ export default {
     //   toFix
     },
     computed: {
-      logdata(){
-        console.log('cart data');
-        return console.log(this.cart_data);
-      },
+      // logdata(){
+      //   console.log('cart data');
+      //   return console.log(this.cart_data);
+      // },
       cartTotalCost() {
         let result = []
         if (this.cart_data.length) {
-          console.log(this.cart_data)
+          
           for (let item of this.cart_data) {
             result.push(item.price * item.quantity)
           }
           result = result.reduce(function (sum, el) {
             return sum + el;
           })
+          //console.log(result)
           return result;
-        } else {
+        } 
+        else {
           return 0
         }
       }
@@ -355,7 +359,22 @@ export default {
         this.DELETE_FROM_CART(index)
       },
       validate () {
-        this.$refs.form.validate()
+        if(this.$refs.form.validate())
+        {
+          console.log(this.formData);
+          axios({
+              method: 'post',
+              url: 'http://127.0.0.1/api/order',
+              data: this.formData
+          })
+          .then(function (response) {
+            console.log(response);
+            })
+          .catch(error => { 
+              console.error(error)
+            });
+          
+          }
       },
       reset () {
         this.$refs.form.reset()
