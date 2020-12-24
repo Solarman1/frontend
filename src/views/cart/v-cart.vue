@@ -82,7 +82,7 @@
                 <v-row>
                    <v-col md="5"> 
                      <v-text-field
-                    v-model="formData.name" 
+                    v-model="formData.customerName" 
                     :rules="nameRules"
                     name="Name"
                     label="Имя"
@@ -93,7 +93,7 @@
 
                   <v-col md="5">
                     <v-text-field
-                    v-model="formData.phone"
+                    v-model="formData.customerPhone"
                     :counter="12"
                     :rules="phoneRules"
                     name="Phone"
@@ -107,7 +107,7 @@
 
                   <v-col md="5"> 
                     <v-text-field
-                    v-model="formData.adres"
+                    v-model="formData.customerAdres"
                     :rules="adresRules"
                     name="Adres"
                     label="Улица, дом/подьезд/квартира/офис"
@@ -117,7 +117,7 @@
                   
                   <v-col md="5">
                     <v-text-field
-                    v-model="formData.email"
+                    v-model="formData.customerEmail"
                     :rules="emailRules"
                     name="Email"
                     label="E-mail"
@@ -167,7 +167,7 @@
                 </v-container>
 
           <v-container fluid>
-            <v-radio-group v-model="formData.paymentInfo">
+            <v-radio-group v-model="formData.paymentType">
               <template v-slot:label>
                 <div>Способ оплаты</div>
               </template>
@@ -283,18 +283,18 @@ export default {
         offlineCash: false,
         valid: true,
         formData: {
-          name  : '',
-          phone : '',
-          adres : '',
-          email : '',
-          sdacha: 0,
+          customerName  : '',
+          customerPhone : '',
+          customerEmail : '',          
+          customerAdres : '',
           deliveryTime  : '',
+          sdacha        : 0, 
           personsCount  : 0,
-          paymentInfo   : 0,
+          paymentType   : 0,
           description   : '',
           totalPrice    : 0,
         },
-
+        resBasket: [],
       
       deliveryTimeRules: [
         v => !!v || 'Введите желаемое время доставки',
@@ -360,14 +360,54 @@ export default {
         this.DELETE_FROM_CART(index)
       },
       validate () {
-        if(this.$refs.form.validate())
-        {
-          console.log(this.formData);
-          axios({
-              method: 'post',
-              url: 'http://www.ochag55.ru/api/order',
-              data: this.formData
+        // console.log(this.formData);
+        //   console.log('endFormData');  
+          //console.log(this.cart_data);
+          
+          for (let i = 0; i < this.cart_data.length; i++) {
+            this.resBasket[i] = {
+              orderId: 0,
+              productId: this.cart_data[i].id,
+              productName: this.cart_data[i].name,
+              productPrice: this.cart_data[i].price,
+              productQuantity: this.cart_data[i].quantity,
+              productTotalPrice: this.cart_data[i].price * this.cart_data[i].quantity,
+            }
+          }
+         
+          let tempResult = []
+          for (let item of this.resBasket) {
+            tempResult.push(item.productPrice * item.productQuantity)
+          }
+          tempResult = tempResult.reduce(function (sum, el) {
+            return sum + el;
           })
+          console.log(tempResult);
+          this.formData.totalPrice = tempResult;
+
+         console.log(this.resBasket);
+         console.log(this.formData);
+
+        //if(this.$refs.form.validate())
+        //{
+          
+          // axios({
+          //     method: 'post',
+          //     url: 'http://www.ochag55.ru/api/order',
+          //     data: this.formData
+          // })
+          // .then(function (response) {
+          //   console.log(response);
+          //   })
+          // .catch(error => { 
+          //     console.error(error)
+          //   });
+
+            axios({
+              method: 'post',
+              url: 'http://www.ochag55.ru/api/basket',
+              data: this.resBasket
+            })
           .then(function (response) {
             console.log(response);
             })
@@ -375,7 +415,7 @@ export default {
               console.error(error)
             });
           
-          }
+          //}
       },
       reset () {
         this.$refs.form.reset()
