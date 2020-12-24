@@ -57,9 +57,9 @@
            
             dark
         >
-            <h2 v-if="cart_data.length">
-            <p class="total__name">Итого:  {{cartTotalCost}} руб. </p>
-           
+            <h2 v-if="cart_data.length" >
+            <p class="total__name"  >Итого:  {{cartTotalCost}} руб. </p>
+          
             <!-- <p> | toFix | formattedPrice}}</p> -->
             </h2>
     </v-card>    
@@ -68,7 +68,7 @@
                 v-if="cart_data.length"
                 
             >
-            <v-card-title class="text--center">Оформление заказа</v-card-title>
+            <v-card-title  class="text--center">Оформление заказа</v-card-title>
 
             <template>
               <v-form
@@ -287,11 +287,12 @@ export default {
           phone : '',
           adres : '',
           email : '',
-          sdacha: '',
+          sdacha: 0,
           deliveryTime  : '',
-          personsCount  : '',
-          paymentInfo   : '',
+          personsCount  : 0,
+          paymentInfo   : 0,
           description   : '',
+          totalPrice    : 0,
         },
 
       
@@ -364,7 +365,7 @@ export default {
           console.log(this.formData);
           axios({
               method: 'post',
-              url: 'http://127.0.0.1/api/order',
+              url: 'http://www.ochag55.ru/api/order',
               data: this.formData
           })
           .then(function (response) {

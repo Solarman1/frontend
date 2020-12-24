@@ -3,7 +3,7 @@
     class="mx-auto my-12" 
     max-width="344" >
         <v-img
-        :src="'http://127.0.0.1:8000/storage/productImages/'+product_data.image"
+        :src="'http://135.181.110.79:8080/storage/productImages/'+product_data.image"
         height="250px"
         >
         </v-img>

@@ -6,7 +6,7 @@
                 <v-img 
                 max-height="70"
                 max-width="150"
-                :src="'http://127.0.0.1:8000/storage/productImages/'+cart_item_data.image">
+                :src="'http://135.181.110.79:8080/storage/productImages/'+cart_item_data.image">
                 </v-img>
             </td>
 
