@@ -382,26 +382,26 @@ export default {
           tempResult = tempResult.reduce(function (sum, el) {
             return sum + el;
           })
-          console.log(tempResult);
+          //console.log(tempResult);
           this.formData.totalPrice = tempResult;
 
-         console.log(this.resBasket);
-         console.log(this.formData);
+        //  console.log(this.resBasket);
+        //  console.log(this.formData);
 
-        //if(this.$refs.form.validate())
-        //{
+        if(this.$refs.form.validate())
+        {
           
-          // axios({
-          //     method: 'post',
-          //     url: 'http://www.ochag55.ru/api/order',
-          //     data: this.formData
-          // })
-          // .then(function (response) {
-          //   console.log(response);
-          //   })
-          // .catch(error => { 
-          //     console.error(error)
-          //   });
+          axios({
+              method: 'post',
+              url: 'http://www.ochag55.ru/api/order',
+              data: this.formData
+          })
+          .then(function (response) {
+            console.log(response);
+            })
+          .catch(error => { 
+              console.error(error)
+            });
 
             axios({
               method: 'post',
@@ -409,13 +409,22 @@ export default {
               data: this.resBasket
             })
           .then(function (response) {
-            console.log(response);
+                if(response){
+                  axios('http://www.ochag55.ru/api/mailsend', {
+                  method: "GET"
+                  }).then(function (response) {
+                    console.log(response);
+                  })
+                  .catch(error => { 
+                      console.error(error)
+                  });
+                }
             })
           .catch(error => { 
               console.error(error)
             });
           
-          //}
+          }
       },
       reset () {
         this.$refs.form.reset()
