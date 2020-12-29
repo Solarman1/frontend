@@ -366,7 +366,7 @@ export default {
           
           for (let i = 0; i < this.cart_data.length; i++) {
             this.resBasket[i] = {
-              orderId: 0,
+              orderId: null,
               productId: this.cart_data[i].id,
               productName: this.cart_data[i].name,
               productPrice: this.cart_data[i].price,
@@ -393,37 +393,44 @@ export default {
           
           axios({
               method: 'post',
-              url: 'http://www.ochag55.ru/api/order',
+              url: 'https://api.ochag55.ru/api/order',
               data: this.formData
           })
-          .then(function (response) {
-            console.log(response);
-            })
-          .catch(error => { 
-              console.error(error)
+          .then((response)=> {
+            console.log(response.data.orderId); 
+            let id = response.data.orderId;
+            this.resBasket.forEach(item => {
+                  item.orderId = id;
             });
-
-            axios({
-              method: 'post',
-              url: 'http://www.ochag55.ru/api/basket',
-              data: this.resBasket
-            })
-          .then(function (response) {
-                if(response){
-                  axios('http://www.ochag55.ru/api/mailsend', {
-                  method: "GET"
-                  }).then(function (response) {
-                    console.log(response);
+                ///start basket and mail
+                axios({
+                  method: 'post',
+                  url: 'https://api.ochag55.ru/api/basket',
+                  data: this.resBasket
+                })
+                .then(function (response) {
+                      if(response){
+                        axios('https://api.ochag55.ru/api/mailsend', {
+                        method: "GET"
+                        }).then(function (response) {
+                          console.log(response);
+                        })
+                        .catch(error => { 
+                            console.error(error)
+                        });
+                      }
                   })
-                  .catch(error => { 
-                      console.error(error)
-                  });
-                }
+                .catch(error => { 
+                  console.log('afeter post basket'+this.resBasket);
+                    console.error(error)
+                });
+                /// end axios basket and mail
+            console.log(this.resBasket);
             })
           .catch(error => { 
               console.error(error)
             });
-          
+                   
           }
       },
       reset () {

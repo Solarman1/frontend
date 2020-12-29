@@ -8,6 +8,9 @@ export default {
     CART(state){
         return state.cart;
     },
+    ORDERID(state){
+        return state.orderId;
+    },
     CARTITEMSLENGTH(state){
         //arr.reduce((sum, current) => sum + current);
         let total = [];

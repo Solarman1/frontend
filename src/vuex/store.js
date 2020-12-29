@@ -18,6 +18,7 @@ let store = new Vuex.Store({
     categorys: [],
     products: [],
     cart: [],
+    orderId : 0,
   },
   mutations,
   actions,

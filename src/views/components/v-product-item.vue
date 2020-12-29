@@ -1,20 +1,28 @@
 <template>
     <v-card
     class="mx-auto my-12" 
-    max-width="344" >
+    max-width="600" >
+   <div class="d-flex flex-no-wrap justify-space-between">
+     <v-avatar
+          class="ma-3"
+          size="225"
+          tile>
         <v-img
-        :src="'http://135.181.110.79:8080/storage/productImages/'+product_data.image"
-        height="250px"
+        :src="'http://api.ochag55.ru/storage/productImages/'+product_data.image" 
         >
         </v-img>
+    </v-avatar>
+              <div class="mr-15">
 
-        <v-card-title>
+        <v-card-title class="headline"
+                  >
          <div class="productName">{{product_data.name}}</div> 
         </v-card-title>
 
         <v-card-subtitle>
           {{product_data.weight}}
         </v-card-subtitle>
+        
           <v-card-text>
               
                 <v-card-title 
@@ -25,21 +33,20 @@
                 </v-card-title>
             
           </v-card-text>
-
-        <v-card-actions class="pb-5">
+                  <v-card-actions class="pb-5">
 
         <v-btn
-            class="ml-5"
+            class="mr-8"
             color="deep-orange darken-1"
             @click="addToCart"
         >
             В корзину
         </v-btn>
 
-        <v-spacer></v-spacer>
-           
+            
+
        <v-btn
-        class="mr-5"
+        class=""
         icon
         text
         @click="show = !show"
@@ -48,7 +55,6 @@
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
     </v-card-actions>
-
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
@@ -58,6 +64,14 @@
         </v-card-text>
       </div>
     </v-expand-transition>
+              </div>
+   
+
+
+    
+
+    
+   </div>
     </v-card>
 </template>
 
@@ -94,10 +108,10 @@
 </script>
 
 <style>
-.priceValue {
+/* .priceValue {
   font-size: 35px;
 }
 .productName {
   font-size: 28px;
-}
+} */
 </style>

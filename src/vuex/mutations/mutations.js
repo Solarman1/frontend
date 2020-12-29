@@ -22,6 +22,14 @@ export default{
             state.cart.push(product)
         }
     },
+    SET_ORDERID_TO_STATE: (state, orderId) => {
+        orderId.forEach(element => {
+            //console.log(element.id);
+            state.orderId  = element.id;
+            });
+            console.log('in mutation');
+           console.log(orderId); 
+    },
     REMOVE_FROM_CART: (state, index) => {
         state.cart.splice(index, 1)
     },

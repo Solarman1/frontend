@@ -7,13 +7,19 @@
 
                 <router-link :to="{name: 'ProductMenu', query: { 'product': category_data.id }}">
                         <v-img
-                        :src="'http://135.181.110.79:8080/storage/categoryImages/'+category_data.image"
+                        class="white--text align-end"
+                        gradient="to bottom, rgba(0,0,0,.7), rgba(0,0,0,.5)"
+                        :src="'http://api.ochag55.ru/storage/categoryImages/'+category_data.image"
                         height="250px"
-                        ></v-img>
+                        >
 
-                        <v-card-title>
+                        <v-card-title >
                         {{category_data.name}}
-                        </v-card-title> 
+                        </v-card-title>
+                        
+                        </v-img>
+
+                         
                 </router-link>
               </v-card>    
                     

@@ -21,6 +21,7 @@
             <v-row dense>
              
                 <v-col
+                :cols="3"
                 v-for="categorys in CATEGORYS"
                         :key="categorys.id"
                         
