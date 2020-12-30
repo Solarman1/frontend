@@ -1,35 +1,53 @@
 <template>
-            <tr
-            >
+ <v-row dense >
+             <v-col cols="12">    
+      <v-card  class="pa-2"
+            outlined>          
 
-            <td>
+                <div class="d-flex flex-no-wrap justify-space-between">
+                <v-col cols="15"
+                  xs="15"
+                  sm="15"
+                  md="12">
+                      <v-card-title
+                        class="headline"
+                        
+                      >{{cart_item_data.name}}
+                      </v-card-title>
+                       <v-card-subtitle>
                 <v-img 
-                max-height="70"
-                max-width="150"
+                max-height="110"
+                max-width="250"
                 :src="'http://api.ochag55.ru/storage/productImages/'+cart_item_data.image">
                 </v-img>
-            </td>
+                </v-card-subtitle>
 
-            <td  class="text-center">
-              <p class="price_p">{{cart_item_data.name}}</p>
-            </td>
+                </v-col>
+                
+             </div>
+                    
+                  <v-card-title >Цена: {{cart_item_data.price}} руб.</v-card-title>
 
-            <td class="text-center">
-              <p class="price_p">{{cart_item_data.price}} руб. </p>
-              </td>
-            <td>
-                
-                 <p class="price_p">
-                  <span class="quantity__btn" @click="decrementItem"><v-icon>mdi-minus</v-icon></span> 
-                  {{cart_item_data.quantity}} 
-                 <span class="quantity__btn" @click="incrementItem"><v-icon>mdi-plus</v-icon></span>
-                 </p> 
-                
-            </td>
-            <td>{{this.cart_item_data.price * this.cart_item_data.quantity}} руб. </td>
-            <td><button @click="deleteFromCart"><v-icon>mdi-delete</v-icon></button></td>
-            </tr>
+                   <v-card-actions right>Количество:
+                      <span class="quantity__btn" @click="decrementItem"><v-icon>mdi-minus</v-icon></span> 
+                         {{cart_item_data.quantity}} 
+                      <span class="quantity__btn" @click="incrementItem"><v-icon>mdi-plus</v-icon></span>
+                      </v-card-actions>                 
+                      
+                    <v-card-actions>  
+                    Общая цена:  {{this.cart_item_data.price * this.cart_item_data.quantity}} руб.
+                    </v-card-actions>    
+                    <v-card-actions right>
+                    Удалить товар ->  <button @click="deleteFromCart"><v-icon>mdi-delete</v-icon></button>
+                    </v-card-actions>
+                    
+               
+            </v-card> 
+            </v-col> 
+ </v-row>
 </template>
+
+
 <script>
 import formattedPrice from "../../filters/price-format";
 
@@ -69,6 +87,17 @@ export default {
 <style>
 .price_p{
   font-size: 20px;
+}
+
+@media (max-width: 776px) {
+  .price_p{
+font-size: 10px;
+  }
+}
+@media (min-width: 776px) {
+  .price_p{
+font-size: 25px;
+  }
 }
 </style>
 

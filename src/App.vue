@@ -32,6 +32,9 @@ import VNavigationPage from './views/components/v-navigation-page.vue';
 
 export default {
   name: 'App',
+   title: 'Очаг',
+
+ 
   
   components: {
     VFooterPage,
@@ -48,7 +51,9 @@ export default {
 
       },
     },
-    mounted(){}
+    mounted(){},
+    
+
 };
 </script>
 <style>
