@@ -76,7 +76,7 @@ export default {
 
 #inspire{
    background-image: url("./assets/tree.jpg");
-   background-size: cover;
+   background-size: auto;
 }
 a{
   background-color: transparent;
@@ -93,4 +93,8 @@ a:active {
 /* a:hover{
   color: rgb(110, 48, 24);
 }; */
+
+
+
+
 </style>

@@ -5,6 +5,9 @@ import Contacts from '../views/Contacts.vue'
 import ProductMenu from '../views/Menu/ProductMenu.vue'
 import CategoryMenu from '../views/Menu/CategoryMenu.vue'
 import Cart from '../views/cart/v-cart.vue'
+import PaymentInfo from '../views/Paymentinfo.vue'
+import Confidance from '../views/Confidencpolitic.vue'
+import Userpolitic from '../views/Userpolitic.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +42,21 @@ Vue.use(VueRouter)
     path: '/contacts',
     name: 'Contacts',
     component: Contacts
+  },
+  {
+    path: '/paymentinfo',
+    name: 'paymentinfo',
+    component: PaymentInfo
+  },
+  {
+    path: '/confidance',
+    name: 'confidance',
+    component: Confidance
+  },
+  {
+    path: '/userpolitic',
+    name: 'userpolitic',
+    component: Userpolitic
   },
 ]
 

@@ -1,28 +1,21 @@
 <template>
-    <v-card
+     <v-card
+      id="cardMax"
     class="mx-auto my-12" 
-    max-width="600" >
-   <div class="d-flex flex-no-wrap justify-space-between">
-     <v-avatar
-          class="ma-3"
-          size="225"
-          tile>
+    max-width="344" >
         <v-img
-        :src="'http://api.ochag55.ru/storage/productImages/'+product_data.image" 
+        :src="'https://api.ochag55.ru/storage/productImages/'+product_data.image"
+        height="250px"
         >
         </v-img>
-    </v-avatar>
-              <div class="mr-15">
 
-        <v-card-title class="headline"
-                  >
+        <v-card-title>
          <div class="productName">{{product_data.name}}</div> 
         </v-card-title>
 
         <v-card-subtitle>
           {{product_data.weight}}
         </v-card-subtitle>
-        
           <v-card-text>
               
                 <v-card-title 
@@ -33,20 +26,21 @@
                 </v-card-title>
             
           </v-card-text>
-                  <v-card-actions class="pb-5">
+
+        <v-card-actions class="pb-5">
 
         <v-btn
-            class="mr-8"
+            class="ml-5"
             color="deep-orange darken-1"
             @click="addToCart"
         >
             В корзину
         </v-btn>
 
-            
-
+        <v-spacer></v-spacer>
+           
        <v-btn
-        class=""
+        class="mr-5"
         icon
         text
         @click="show = !show"
@@ -55,6 +49,7 @@
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
     </v-card-actions>
+
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
@@ -64,16 +59,13 @@
         </v-card-text>
       </div>
     </v-expand-transition>
-              </div>
-   
-
+    </v-card>  
 
     
+     
 
-    
-   </div>
-    </v-card>
 </template>
+
 
 <script>
   export default {
@@ -108,10 +100,34 @@
 </script>
 
 <style>
+
 /* .priceValue {
-  font-size: 35px;
+  font-size: 25px;
 }
 .productName {
-  font-size: 28px;
+  font-size: 15px;
+}  */
+@media (min-width: 900px) {
+  /* #cardMin {
+    display: none;
+  }
+  #cadMax {
+    display: block;
+  } */
+  /* .v-responsive__content{
+    size: 100px;
+  } */
+  .priceValue {
+  font-size: 35px;
+}
+  .productName{
+  font-size: 18px;
+}
+} 
+/* @media (max-width: 500px) {
+
+  v-avatar{
+    size: 20;
+  }
 } */
 </style>

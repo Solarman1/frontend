@@ -6,6 +6,15 @@
       dark
     >
       <v-list dense >
+        
+          <v-list-item to='About' link>
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>О нас</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         <v-list-group dark>
         
         <template  v-slot:activator >
@@ -33,16 +42,8 @@
        
       </v-list-group>
 
-          <v-list-item to='About' link>
-            <v-list-item-action>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>О нас</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
 
-          <v-list-item to='/' link>
+          <v-list-item to='/paymentinfo' link>
                   <v-list-item-action>
                     <v-icon>mdi-currency-usd</v-icon>
                   </v-list-item-action>

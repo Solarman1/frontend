@@ -30,7 +30,8 @@
           <a href="https://www.instagram.com/ochag_55/" target="_blank"><v-icon size="24px">mdi-instagram</v-icon></a>
         </v-btn>
       </v-card-text>
-
+ <router-link to="/confidance" >Политика конфиденциальности </router-link>
+ <router-link to="/userpolitic" > Пользовательское соглашение</router-link>
       <v-card-text class="py-2 white--text text-center">
         <strong class="footerText">Адреса: г. Омск, ул. Волочаевская 19 к4 </strong>
         <strong class="footerText">, ул. Карла Либкнехта, 6</strong>

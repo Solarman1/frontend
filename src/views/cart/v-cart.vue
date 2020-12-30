@@ -58,8 +58,8 @@
             dark
         >
             <h2 v-if="cart_data.length" >
-            <p class="total__name"  >Итого:  {{cartTotalCost}} руб. </p>
-          
+            <p class="total__name"  >Итого:  <strong class="orange--text">{{cartTotalCost}} руб.</strong> </p>
+         <p class="total__name"  > Минимальный заказ бесплатной доставки по общему меню составляет <strong class="orange--text">1000 рублей</strong>  </p> 
             <!-- <p> | toFix | formattedPrice}}</p> -->
             </h2>
     </v-card>    
@@ -141,6 +141,7 @@
                   <v-col md="2">
                     <v-text-field
                         v-model="formData.personsCount"
+                        :rules="personsCountRules"
                         name="PersonsCount"
                         color="deep-purple"
                         label="Количество персон(приборы)"
@@ -171,7 +172,7 @@
               <template v-slot:label>
                 <div>Способ оплаты</div>
               </template>
-              <v-radio @click="paymentCashFalse" value="1">
+              <v-radio @click="paymentCashFalse" value="1" disabled>
                 <template v-slot:label>
                   <div>Расчет на сайте</div>
                 </template>
@@ -189,10 +190,11 @@
             </v-radio-group>
 
             <v-row v-if="offlineCash == true" >
-                  <v-col md="1">
-                  Потребуется сдача? 
+                  <v-col md="4">
+                  Требуется сдача? Введите с какой купюры. 
                     <v-text-field
                         v-model="formData.sdacha"
+                        :rules="sdachaRules"
                         name="Sdacha"
                         color="deep-purple"
                         label="руб."
@@ -211,7 +213,7 @@
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
-                          href="http://vuetifyjs.com"
+                          href="http://www.ochag55.ru/confidance"
                           @click.stop
                           v-on="on"
                         >
@@ -225,7 +227,7 @@
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
-                          href="http://vuetifyjs.com"
+                          href="http://www.ochag55.ru/userpolitic"
                           @click.stop
                           v-on="on"
                         >
@@ -241,19 +243,50 @@
             </v-container>
    
  
-                    
+         
+                <v-dialog
+                    v-model="dialog"
+                    persistent
+                    max-width="290"
+                  >
+                  <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                        block
+                        v-on="on"
+                        v-bind="attrs"
+                        :disabled="!valid"
+                        color="success"
+                        class="mr-4"
+                        @click="validate"
+                        
+                        >
+                        <!-- type="submit" -->
+                        Заказать
+                        </v-btn>
+                  </template>
 
-                    <v-btn
-                    block
-                    :disabled="!valid"
-                    color="success"
-                    class="mr-4"
-                    @click="validate"
-                    
-                    >
-                    <!-- type="submit" -->
-                    Заказать
-                    </v-btn>
+
+                        <v-card>
+
+                        <v-card-title class="Успешно">
+                          Заказ успешно офрмлен
+                        </v-card-title>
+                          <form action="http://www.ochag55.ru/">
+                            <v-card-text>В ближайшее время с вами свяжется оператор для потверждения заказа.</v-card-text>
+                              <v-card-actions>
+                              <v-spacer></v-spacer>
+                                <v-btn
+                                  color="green darken-1"
+                                  text
+                                  type="submit"
+                                >
+                                  Вернуться обратно в магазин
+                                </v-btn>
+                            </v-card-actions>
+                          </form>
+                        </v-card>
+                  </v-dialog>
+
 
                 </v-form >
               </template>
@@ -281,6 +314,7 @@ export default {
     data() {
       return {
         offlineCash: false,
+        dialog: false,
         valid: true,
         formData: {
           customerName  : '',
@@ -298,7 +332,14 @@ export default {
       
       deliveryTimeRules: [
         v => !!v || 'Введите желаемое время доставки',
-      ],   
+      ], 
+      personsCountRules:[
+        v => !!v || 'Поле обязательно для заполнения',
+        v => /^\d+$/.test(v) || 'Введите число',                  
+      ],
+      sdachaRules:[
+        v => /^\d+$/.test(v) || 'Введите число', 
+      ],
       adresRules: [
         v => !!v || 'Введите адрес доставки',
       ],
@@ -421,11 +462,11 @@ export default {
                       }
                   })
                 .catch(error => { 
-                  console.log('afeter post basket'+this.resBasket);
+                  //console.log('afeter post basket'+this.resBasket);
                     console.error(error)
                 });
                 /// end axios basket and mail
-            console.log(this.resBasket);
+            //console.log(this.resBasket);
             })
           .catch(error => { 
               console.error(error)
