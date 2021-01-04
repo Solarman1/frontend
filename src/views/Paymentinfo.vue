@@ -5,7 +5,7 @@
   <v-card-title class="text--center">Контактная информация</v-card-title>
 
     <v-card-subtitle class="pb-0"></v-card-subtitle>
-
+ <iframe src="https://www.google.com/maps/d/embed?mid=1xG4EUMWYESEqMs34hJCpwZIhg52cM3CC" width="640" height="480"></iframe>
     <v-card-text class="text--primary">
 
       <div>mail: <a href="mailto: ochag.55omsk@gmail.com">ochag.55omsk@gmail.com</a> </div>

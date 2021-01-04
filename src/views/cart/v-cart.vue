@@ -13,9 +13,9 @@
             <p v-if="!cart_data.length">Корзина пуста...</p>
         </v-card>   
     
-    <v-simple-table v-if="cart_data.length">
-        <template v-slot:default>
-        <thead>
+  
+        <template v-if="cart_data.length">
+        <!-- <thead>
             <tr>
             <th class="text-center">
                
@@ -37,9 +37,8 @@
             </th>
             </tr>
         </thead>
- <tbody>
+  <tbody> -->
     <vCartItem
-    class="mx-auto" 
     
      v-for="(item, index) in cart_data"
       :key="item.id"
@@ -48,9 +47,9 @@
         @increment="increment(index)"
         @decrement="decrement(index)"
     />
-       </tbody>
+       <!-- </tbody> -->
         </template>
-    </v-simple-table>  
+ 
     <v-card
             class="pa-2"
             outlined
@@ -79,19 +78,31 @@
                 >
 
                 <v-container>
-                <v-row>
-                   <v-col md="5"> 
+                
+                <v-row >
+                   <v-col 
+                   cols="12"
+                   xs="5"
+                  sm="6"
+                  md="5"> 
                      <v-text-field
                     v-model="formData.customerName" 
                     :rules="nameRules"
                     name="Name"
                     label="Имя"
                     required
+                     solo
                     >
                     </v-text-field>
+                     
                    </v-col>
 
-                  <v-col md="5">
+               
+                      
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="5">
                     <v-text-field
                     v-model="formData.customerPhone"
                     :counter="12"
@@ -99,72 +110,95 @@
                     name="Phone"
                     label="Телефон"
                     required
+                    solo
                     ></v-text-field>
+               
                   </v-col>                  
-                </v-row>
+               
+              
 
-                <v-row>
-
-                  <v-col md="5"> 
+                  <v-col cols="12"
+                  xs="5"
+          sm="7"
+          md="6"> 
+                   
+                   
                     <v-text-field
                     v-model="formData.customerAdres"
                     :rules="adresRules"
                     name="Adres"
                     label="Улица, дом/подьезд/квартира/офис"
                     required
+                     solo
                     ></v-text-field>
+                 
+                 
                   </v-col>
                   
-                  <v-col md="5">
+                  <v-col cols="15"
+                  xs="5"
+          sm="6"
+          md="5">
+            
                     <v-text-field
                     v-model="formData.customerEmail"
                     :rules="emailRules"
                     name="Email"
                     label="E-mail"
                     required
+                     solo
                     ></v-text-field>
+                  
                   </v-col>
                     
-                </v-row>
+                
 
-                <v-row>
-                  <v-col md="2">
+               
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="3">
+                  
                     <v-text-field
                         v-model="formData.deliveryTime"
                         :rules="deliveryTimeRules"
+                         solo
                         name="DeliveryTime"
                         color="deep-purple"
                         label="Время заказа"
                     ></v-text-field>
                   </v-col>
 
-                  <v-col md="2">
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="3">
+            
+                <label for="PersonsCount">Количество персон(приборы)</label>
                     <v-text-field
+                     solo
                         v-model="formData.personsCount"
                         :rules="personsCountRules"
                         name="PersonsCount"
                         color="deep-purple"
                         label="Количество персон(приборы)"
-                    ></v-text-field>
-
-                    
+                    ></v-text-field>                 
                   </v-col>
-                   
-                </v-row>
-                <v-row>
+                    </v-row>  
+             
 
-                  <v-col md="10">
-                  <v-textarea
-                      v-model="formData.description"
-                      name="Description"
-                      filled
-                      label="Комментарий к заказу"
-                      auto-grow
-                  ></v-textarea>
-                  </v-col>
+                    <v-col xs="10" sm="10" md="10">
+                    <v-textarea
+                        v-model="formData.description"
+                        name="Description"
+                        filled
+                        
+                        label="Комментарий к заказу"
+                        auto-grow
+                    ></v-textarea>
+                    </v-col>
                   
-                </v-row> 
-                   
+              
                 </v-container>
 
           <v-container fluid>
@@ -201,6 +235,7 @@
                     ></v-text-field>
                   </v-col>              
                 </v-row>
+                
           </v-container>
 
                     
@@ -501,5 +536,11 @@ export default {
   }
 </script>
 <style>
+@media (max-width: 776px) {
+  .v-data-table > .v-data-table__wrapper > table{
+font-size: 20px;
+  }
 
+
+}
 </style>
