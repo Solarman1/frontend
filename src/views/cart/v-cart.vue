@@ -213,7 +213,7 @@
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
-                          href="http://www.ochag55.ru/confidance"
+                          href="https://www.ochag55.ru/confidance"
                           @click.stop
                           v-on="on"
                         >
@@ -271,7 +271,7 @@
                         <v-card-title class="Успешно">
                           Заказ успешно офрмлен
                         </v-card-title>
-                          <form action="http://www.ochag55.ru/">
+                          <form action="https://www.ochag55.ru/">
                             <v-card-text>В ближайшее время с вами свяжется оператор для потверждения заказа.</v-card-text>
                               <v-card-actions>
                               <v-spacer></v-spacer>
@@ -279,6 +279,7 @@
                                   color="green darken-1"
                                   text
                                   type="submit"
+                                  v-if="deliveryStatus == true"
                                 >
                                   Вернуться обратно в магазин
                                 </v-btn>
@@ -315,6 +316,7 @@ export default {
       return {
         offlineCash: false,
         dialog: false,
+        deliveryStatus: false,
         valid: true,
         formData: {
           customerName  : '',
@@ -440,39 +442,46 @@ export default {
           .then((response)=> {
             console.log(response.data.orderId); 
             let id = response.data.orderId;
+            
             this.resBasket.forEach(item => {
                   item.orderId = id;
             });
                 ///start basket and mail
-                axios({
-                  method: 'post',
-                  url: 'https://api.ochag55.ru/api/basket',
-                  data: this.resBasket
-                })
-                .then(function (response) {
-                      if(response){
-                        axios('https://api.ochag55.ru/api/mailsend', {
-                        method: "GET"
-                        }).then(function (response) {
-                          console.log(response);
-                        })
-                        .catch(error => { 
-                            console.error(error)
-                        });
-                      }
-                  })
-                .catch(error => { 
-                  //console.log('afeter post basket'+this.resBasket);
-                    console.error(error)
-                });
+            axios({
+              method: 'post',
+              url: 'https://api.ochag55.ru/api/basket',
+              data: this.resBasket
+            })
+            .then( () => {
+                this.sendMail();        
+              })
+            .catch(error => { 
+              //console.log('afeter post basket'+this.resBasket);
+                console.error(error)
+            });
                 /// end axios basket and mail
-            //console.log(this.resBasket);
             })
           .catch(error => { 
               console.error(error)
             });
-                   
+                  
           }
+      },
+      sendMail()
+      {
+        axios('https://api.ochag55.ru/api/mailsend', {
+                    method: "GET"
+                    }).then((response) => {
+                      if(response)
+                      {
+                        this.deliveryStatus  = true;
+                        console.log('inside mailsend');
+                        console.log(this.deliveryStatus);
+                      }  
+                    })
+                    .catch(error => { 
+                        console.error(error)
+                    });
       },
       reset () {
         this.$refs.form.reset()

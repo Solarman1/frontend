@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMeta from 'vue-meta';
 //import Home from '../views/Home.vue'
 import Contacts from '../views/Contacts.vue'
 import ProductMenu from '../views/Menu/ProductMenu.vue'
@@ -9,7 +10,10 @@ import PaymentInfo from '../views/Paymentinfo.vue'
 import Confidance from '../views/Confidencpolitic.vue'
 import Userpolitic from '../views/Userpolitic.vue'
 
+
 Vue.use(VueRouter)
+Vue.use(VueMeta);
+
 
   const routes = [
   {
@@ -62,6 +66,8 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
+
+  
   base: process.env.BASE_URL,
   routes
 })
