@@ -65,6 +65,6 @@ export default {
 </script>
 <style scoped>
 .menuTitle{
-  font-size: 25px;
+  font-size: 5px;
 }
 </style>
