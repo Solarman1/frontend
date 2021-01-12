@@ -13,7 +13,7 @@
                         height="250px"
                         >
 
-                        <v-card-title >
+                        <v-card-title class="menuItem">
                         {{category_data.name}}
                         </v-card-title>
                         
@@ -49,5 +49,19 @@
 </script>
 
 <style>
+.menuItem{
+  font-size: 30px;
+}
+@media (max-width: 500px) {
 
+  .menuItem{
+  font-size: 25px;
+}
+}
+@media (max-width: 330px) {
+
+  .menuItem{
+  font-size: 20px;
+}
+}
 </style>

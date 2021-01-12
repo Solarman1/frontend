@@ -32,9 +32,23 @@ import VNavigationPage from './views/components/v-navigation-page.vue';
 
 export default {
   name: 'App',
-  
+  metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Кафе-Бистро Очаг',
+      // all titles will be injected into this template
+      titleTemplate: '%s | Доставка еды 24 часа',  
+       meta: [
+      { charset: 'utf-8' },
+      { name: 'apple-mobile-web-app-capacity', content: 'yes' },
+      { name: "description", content: "Закажите вкусные шашлыки, пиццу, хачапури, на дом или в любую точку города, служба доставки работает 24 часа."}
+    ] 
+    },
+
+
+
   components: {
     VFooterPage,
+    
     VHeaderPage,
     VNavigationPage
      
@@ -42,13 +56,16 @@ export default {
     data: () => ({
  
     }),
+    
     computed:{},
     methods:{
       drawerChange(){
 
       },
     },
-    mounted(){}
+    mounted(){},
+    
+
 };
 </script>
 <style>
@@ -76,7 +93,7 @@ export default {
 
 #inspire{
    background-image: url("./assets/tree.jpg");
-   background-size: cover;
+   background-size: auto;
 }
 a{
   background-color: transparent;
@@ -93,4 +110,8 @@ a:active {
 /* a:hover{
   color: rgb(110, 48, 24);
 }; */
+
+
+
+
 </style>

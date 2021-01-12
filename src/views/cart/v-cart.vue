@@ -13,9 +13,9 @@
             <p v-if="!cart_data.length">Корзина пуста...</p>
         </v-card>   
     
-    <v-simple-table v-if="cart_data.length">
-        <template v-slot:default>
-        <thead>
+  
+        <template v-if="cart_data.length">
+        <!-- <thead>
             <tr>
             <th class="text-center">
                
@@ -37,9 +37,8 @@
             </th>
             </tr>
         </thead>
- <tbody>
+  <tbody> -->
     <vCartItem
-    class="mx-auto" 
     
      v-for="(item, index) in cart_data"
       :key="item.id"
@@ -48,9 +47,9 @@
         @increment="increment(index)"
         @decrement="decrement(index)"
     />
-       </tbody>
+       <!-- </tbody> -->
         </template>
-    </v-simple-table>  
+ 
     <v-card
             class="pa-2"
             outlined
@@ -58,8 +57,8 @@
             dark
         >
             <h2 v-if="cart_data.length" >
-            <p class="total__name"  >Итого:  {{cartTotalCost}} руб. </p>
-          
+            <p class="total__name"  >Итого:  <strong class="orange--text">{{cartTotalCost}} руб.</strong> </p>
+         <p class="total__name"  > Минимальный заказ бесплатной доставки по общему меню составляет <strong class="orange--text">1000 рублей</strong>  </p> 
             <!-- <p> | toFix | formattedPrice}}</p> -->
             </h2>
     </v-card>    
@@ -79,19 +78,31 @@
                 >
 
                 <v-container>
-                <v-row>
-                   <v-col md="5"> 
+                
+                <v-row >
+                   <v-col 
+                   cols="12"
+                   xs="5"
+                  sm="6"
+                  md="5"> 
                      <v-text-field
                     v-model="formData.customerName" 
                     :rules="nameRules"
                     name="Name"
                     label="Имя"
                     required
+                     solo
                     >
                     </v-text-field>
+                     
                    </v-col>
 
-                  <v-col md="5">
+               
+                      
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="5">
                     <v-text-field
                     v-model="formData.customerPhone"
                     :counter="12"
@@ -99,71 +110,95 @@
                     name="Phone"
                     label="Телефон"
                     required
+                    solo
                     ></v-text-field>
+               
                   </v-col>                  
-                </v-row>
+               
+              
 
-                <v-row>
-
-                  <v-col md="5"> 
+                  <v-col cols="12"
+                  xs="5"
+          sm="7"
+          md="6"> 
+                   
+                   
                     <v-text-field
                     v-model="formData.customerAdres"
                     :rules="adresRules"
                     name="Adres"
                     label="Улица, дом/подьезд/квартира/офис"
                     required
+                     solo
                     ></v-text-field>
+                 
+                 
                   </v-col>
                   
-                  <v-col md="5">
+                  <v-col cols="15"
+                  xs="5"
+          sm="6"
+          md="5">
+            
                     <v-text-field
                     v-model="formData.customerEmail"
                     :rules="emailRules"
                     name="Email"
                     label="E-mail"
                     required
+                     solo
                     ></v-text-field>
+                  
                   </v-col>
                     
-                </v-row>
+                
 
-                <v-row>
-                  <v-col md="2">
+               
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="3">
+                  
                     <v-text-field
                         v-model="formData.deliveryTime"
                         :rules="deliveryTimeRules"
+                         solo
                         name="DeliveryTime"
                         color="deep-purple"
                         label="Время заказа"
                     ></v-text-field>
                   </v-col>
 
-                  <v-col md="2">
+                  <v-col cols="12"
+                  xs="5"
+          sm="6"
+          md="3">
+            
+                <label for="PersonsCount">Количество персон(приборы)</label>
                     <v-text-field
+                     solo
                         v-model="formData.personsCount"
+                        :rules="personsCountRules"
                         name="PersonsCount"
                         color="deep-purple"
                         label="Количество персон(приборы)"
-                    ></v-text-field>
-
-                    
+                    ></v-text-field>                 
                   </v-col>
-                   
-                </v-row>
-                <v-row>
+                    </v-row>  
+             
 
-                  <v-col md="10">
-                  <v-textarea
-                      v-model="formData.description"
-                      name="Description"
-                      filled
-                      label="Комментарий к заказу"
-                      auto-grow
-                  ></v-textarea>
-                  </v-col>
+                    <v-col xs="10" sm="10" md="10">
+                    <v-textarea
+                        v-model="formData.description"
+                        name="Description"
+                        filled
+                        
+                        label="Комментарий к заказу"
+                        auto-grow
+                    ></v-textarea>
+                    </v-col>
                   
-                </v-row> 
-                   
+              
                 </v-container>
 
           <v-container fluid>
@@ -171,7 +206,7 @@
               <template v-slot:label>
                 <div>Способ оплаты</div>
               </template>
-              <v-radio @click="paymentCashFalse" value="1">
+              <v-radio @click="paymentCashFalse" value="1" disabled>
                 <template v-slot:label>
                   <div>Расчет на сайте</div>
                 </template>
@@ -189,16 +224,18 @@
             </v-radio-group>
 
             <v-row v-if="offlineCash == true" >
-                  <v-col md="1">
-                  Потребуется сдача? 
+                  <v-col md="4">
+                  Требуется сдача? Введите с какой купюры. 
                     <v-text-field
                         v-model="formData.sdacha"
+                        :rules="sdachaRules"
                         name="Sdacha"
                         color="deep-purple"
                         label="руб."
                     ></v-text-field>
                   </v-col>              
                 </v-row>
+                
           </v-container>
 
                     
@@ -211,7 +248,7 @@
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
-                          href="http://vuetifyjs.com"
+                          href="https://www.ochag55.ru/confidance"
                           @click.stop
                           v-on="on"
                         >
@@ -225,7 +262,7 @@
                       <template v-slot:activator="{ on }">
                         <a
                           target="_blank"
-                          href="http://vuetifyjs.com"
+                          href="http://www.ochag55.ru/userpolitic"
                           @click.stop
                           v-on="on"
                         >
@@ -241,19 +278,51 @@
             </v-container>
    
  
-                    
+         
+                <v-dialog
+                    v-model="dialog"
+                    persistent
+                    max-width="290"
+                  >
+                  <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                        block
+                        v-on="on"
+                        v-bind="attrs"
+                        :disabled="!valid"
+                        color="success"
+                        class="mr-4"
+                        @click="validate"
+                        
+                        >
+                        <!-- type="submit" -->
+                        Заказать
+                        </v-btn>
+                  </template>
 
-                    <v-btn
-                    block
-                    :disabled="!valid"
-                    color="success"
-                    class="mr-4"
-                    @click="validate"
-                    
-                    >
-                    <!-- type="submit" -->
-                    Заказать
-                    </v-btn>
+
+                        <v-card>
+
+                        <v-card-title class="Успешно">
+                          Заказ успешно офрмлен
+                        </v-card-title>
+                          <form action="https://www.ochag55.ru/">
+                            <v-card-text>В ближайшее время с вами свяжется оператор для потверждения заказа.</v-card-text>
+                              <v-card-actions>
+                              <v-spacer></v-spacer>
+                                <v-btn
+                                  color="green darken-1"
+                                  text
+                                  type="submit"
+                                  v-if="deliveryStatus == true"
+                                >
+                                  Вернуться обратно в магазин
+                                </v-btn>
+                            </v-card-actions>
+                          </form>
+                        </v-card>
+                  </v-dialog>
+
 
                 </v-form >
               </template>
@@ -281,6 +350,8 @@ export default {
     data() {
       return {
         offlineCash: false,
+        dialog: false,
+        deliveryStatus: false,
         valid: true,
         formData: {
           customerName  : '',
@@ -298,7 +369,14 @@ export default {
       
       deliveryTimeRules: [
         v => !!v || 'Введите желаемое время доставки',
-      ],   
+      ], 
+      personsCountRules:[
+        v => !!v || 'Поле обязательно для заполнения',
+        v => /^\d+$/.test(v) || 'Введите число',                  
+      ],
+      sdachaRules:[
+        v => /^\d+$/.test(v) || 'Введите число', 
+      ],
       adresRules: [
         v => !!v || 'Введите адрес доставки',
       ],
@@ -399,39 +477,46 @@ export default {
           .then((response)=> {
             console.log(response.data.orderId); 
             let id = response.data.orderId;
+            
             this.resBasket.forEach(item => {
                   item.orderId = id;
             });
                 ///start basket and mail
-                axios({
-                  method: 'post',
-                  url: 'https://api.ochag55.ru/api/basket',
-                  data: this.resBasket
-                })
-                .then(function (response) {
-                      if(response){
-                        axios('https://api.ochag55.ru/api/mailsend', {
-                        method: "GET"
-                        }).then(function (response) {
-                          console.log(response);
-                        })
-                        .catch(error => { 
-                            console.error(error)
-                        });
-                      }
-                  })
-                .catch(error => { 
-                  console.log('afeter post basket'+this.resBasket);
-                    console.error(error)
-                });
+            axios({
+              method: 'post',
+              url: 'https://api.ochag55.ru/api/basket',
+              data: this.resBasket
+            })
+            .then( () => {
+                this.sendMail();        
+              })
+            .catch(error => { 
+              //console.log('afeter post basket'+this.resBasket);
+                console.error(error)
+            });
                 /// end axios basket and mail
-            console.log(this.resBasket);
             })
           .catch(error => { 
               console.error(error)
             });
-                   
+                  
           }
+      },
+      sendMail()
+      {
+        axios('https://api.ochag55.ru/api/mailsend', {
+                    method: "GET"
+                    }).then((response) => {
+                      if(response)
+                      {
+                        this.deliveryStatus  = true;
+                        console.log('inside mailsend');
+                        console.log(this.deliveryStatus);
+                      }  
+                    })
+                    .catch(error => { 
+                        console.error(error)
+                    });
       },
       reset () {
         this.$refs.form.reset()
@@ -451,5 +536,11 @@ export default {
   }
 </script>
 <style>
+@media (max-width: 776px) {
+  .v-data-table > .v-data-table__wrapper > table{
+font-size: 20px;
+  }
 
+
+}
 </style>

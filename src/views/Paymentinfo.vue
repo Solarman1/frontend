@@ -1,0 +1,77 @@
+<template>
+  <v-card
+    class="mx-auto"
+  >
+  <v-card-title class="text--center">Контактная информация</v-card-title>
+
+    <v-card-subtitle class="pb-0"></v-card-subtitle>
+ <iframe src="https://www.google.com/maps/d/embed?mid=1xG4EUMWYESEqMs34hJCpwZIhg52cM3CC" width="640" height="480"></iframe>
+    <v-card-text class="text--primary">
+
+      <div>mail: <a href="mailto: ochag.55omsk@gmail.com">ochag.55omsk@gmail.com</a> </div>
+    </v-card-text>
+
+     <v-card-text class="text--primary">
+     <div class="wrap-content">
+	<p>
+		<strong><span style="font-size:16px;">Доставка шашлыка и других блюд по Омску</span></strong></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">Доставкой шашлыка в Омске занимается множество заведений, и мы стараемся отличаться в лучшую сторону. Одно дело подавать мясные блюда в заведении, и совсем другое доставить его гостю по адресу. И в случае с доставкой мы понимаем, насколько важно, чтобы шашлык был вкусным и сочным, настолько же важно доставить его вовремя, еще горячим и ароматным.<br />
+		Мы постоянно работаем над контролем качества доставляемых блюд, стараемся улучшить качество и уровень сервиса службы оформления заказов и доставки, работаем с вашими отзывами и делаем работу над ошибками - чтобы стать ближе к идеалу и доставить Вам шашлык и другие блюда вкусными, аппетитными и обязательно горячими. Вы всегда можете <a href="http://www.ochag55.ru/?view=recalls">оставить отзывы</a> о нашем сервисе и ознакомиться с уже существующими. Нам очень важно Ваше мнение.&nbsp;Приятного аппетита!</span></p>
+	<p style="text-align: justify;">
+		<span style="color:#ff0000;"><span style="font-size:16px;"><strong>Доставка заказов КРУГЛОСУТОЧО</strong></span></span></p>
+	<p style="text-align: justify;">
+		&nbsp;</p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;"><strong>!Внимание! В связи с введенным особым режимом самоизоляции из-за распросторонения вируса COVID-19, мы очень тщательно следим за здоровьем наших сотрудников, ежедневно контролируя их температуру 4 раза в день, чтобы Вы могли бесперебойно наслаждаться нашими вкуснейшими блюдами. Курьер доставляет еду в перчатках и маске, оставляя минимум контактов. Мы тщательно дезинфицируем все поверхности каждый час. Мы снабжаем нашу команду подробными рекомедациями о том, как следить за самочувствием и какие меры предосторожности предпринимать. Берегите себя,мы работаем для Вас!</strong></span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">Минимальный заказ бесплатной доставки по общему меню составляет 1000 рублей</span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">В отдаленные районы от 20 км доставка 250 рублей при минимальном заказе от 1000 рублей</span></p>
+	<p style="text-align: justify;">
+		<span style="font-size: 14px;">В случае суммы меньше 1000 рублей, администратор предупреждает, что доставка будет платная и доставку курьеру наличными оплачивает заказчик.</span></p>
+	<ul>
+		<li style="text-align: justify;">
+			<span style="font-size:14px;">до 5 км - 100 рублей</span></li>
+		<li style="text-align: justify;">
+			<span style="font-size:14px;">от 5 км - 150 рублей</span></li>
+	</ul>
+	<p style="text-align: justify;">
+		<strong><span style="font-size:14px;">Правила доставки комплексных обедов:⠀</span></strong></p>
+	<div>
+		<span style="font-size:14px;">Мы доставляем комплексный обед за 250 рублей</span></div>
+	<div>
+		<span style="font-size:14px;">⠀</span></div>
+	<div>
+		<span style="font-size:14px;">Бесплатная доставка комплексного обеда только в черте города</span></div>
+	<div>
+		<span style="font-size:14px;">Бесплатная доставка от 5-ти комплексных обедов на один адрес (1250 рублей)</span><span style="font-size: 14px;">ибо заказчик оплачивает курьеру наличными за доставку по тарифу, указанному выше.</span></div>
+	<div>
+		<span style="font-size:14px;">⠀</span></div>
+	<div>
+		<span style="font-size:14px;">В комплексный обед входят:</span></div>
+	<div>
+		<span style="font-size:14px;">Салат, суп, второе, гарнир, бутылка морса 0,3 л</span></div>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;"><strong>Кавказская кухня самовывозом</strong></span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">Если вы не хотите пользоваться службой доставки или вам просто удобнее заехать за блюдами самим - вы можете воспользоваться самовывозом. Звоните по указанным ниже номерам, оставляйте предзаказ и забирайте ваши блюда кавказской кухни самовывозом горячими, ароматными, только что снятых с мангала. Для того чтобы забрать приготовленные блюда на мангале самовывозом с определенного конкретного адреса &ndash; вы можете позвонить именно в тот Очаг, который ближе к вам. Адреса и телефоны для заказа &ndash; в разделе <router-link :to="{name: 'Contacts'}">Контакты</router-link></span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;"><strong>Способы оплаты</strong></span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">Кафе &quot;Очаг&quot; заботится о своих посетителях, и старается сделать все, чтобы процесс оформления заказа и оплаты был максимально удобен. Мы предлагаем вам все возможные способы оплаты наших блюд:</span></p>
+	<p style="text-align: justify;">
+		<span style="font-size:14px;">1. Наличными курьеру или картой</span></p>
+	<p style="text-align: justify;">
+		<span style="font-size: 14px;">2. Оплата в наших заведениях кавказской кухни при самовывозе.</span></p>
+	<div>
+		<h3>
+</h3>
+		
+	</div>
+</div>
+<p>
+</p>
+    </v-card-text>
+  </v-card>
+</template> 

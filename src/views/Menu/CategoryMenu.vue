@@ -21,7 +21,7 @@
             <v-row dense>
              
                 <v-col
-                :cols="3"
+                
                 v-for="categorys in CATEGORYS"
                         :key="categorys.id"
                         
@@ -67,4 +67,5 @@ export default {
 .menuTitle{
   font-size: 5px;
 }
+
 </style>
