@@ -246,28 +246,41 @@
                     Я прочитал и согласен с условиями 
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
-                        <a
+                        <!-- <a
                           target="_blank"
                           href="https://www.ochag55.ru/confidance"
                           @click.stop
                           v-on="on"
                         >
                           пользовательского соглашения
-                        </a>
+                        </a> -->
+
+                        <router-link 
+                        
+                        to="/userpolitic" 
+                        @click.stop
+                        v-on="on">
+
+                        пользовательского соглашения
+
+                        </router-link>
+
                       </template>
                       Открыть 
                     </v-tooltip>
                     и
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on }">
-                        <a
-                          target="_blank"
-                          href="http://www.ochag55.ru/userpolitic"
-                          @click.stop
-                          v-on="on"
-                        >
-                          политики конфиденциальности
-                        </a>
+                        <router-link 
+                        
+                        to="/confidance" 
+                        @click.stop
+                        v-on="on">
+
+                        политика конфиденциальности
+
+                        </router-link>
+                   
                       </template>
                       Открыть 
                     </v-tooltip>
@@ -352,7 +365,7 @@ export default {
         offlineCash: false,
         dialog: false,
         deliveryStatus: false,
-        valid: true,
+        valid: false,
         formData: {
           customerName  : '',
           customerPhone : '',
@@ -536,11 +549,11 @@ export default {
   }
 </script>
 <style>
-@media (max-width: 776px) {
+/* @media (max-width: 776px) {
   .v-data-table > .v-data-table__wrapper > table{
 font-size: 20px;
   }
 
 
-}
+} */
 </style>

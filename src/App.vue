@@ -81,7 +81,7 @@ export default {
   color: #F4511E !important;
 }
 .v-list-item--active{
-  color: #F4511E !important;
+  color: #F4511E нк;
 }
 
 .v-list-item v-list-item--link theme--dark:visited, v-list-item--link theme--dark:active{

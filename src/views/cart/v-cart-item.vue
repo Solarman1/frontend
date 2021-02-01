@@ -1,6 +1,8 @@
 <template>
  <v-row dense >
-             <v-col cols="12">    
+             <v-col cols="12">
+               <div class="itemProductClass">
+                 
       <v-card  class="pa-2"
             outlined>          
 
@@ -9,11 +11,8 @@
                   xs="15"
                   sm="15"
                   md="12">
-                      <v-card-title
-                        class="headline"
-                        
-                      >{{cart_item_data.name}}
-                      </v-card-title>
+                 <v-card-text class="headline" >{{cart_item_data.name}}</v-card-text>
+                   
                        <v-card-subtitle>
                 <v-img 
                 max-height="110"
@@ -43,6 +42,7 @@
                     
                
             </v-card> 
+             </div>   
             </v-col> 
  </v-row>
 </template>

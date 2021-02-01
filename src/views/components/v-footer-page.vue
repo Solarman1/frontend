@@ -31,6 +31,7 @@
         </v-btn>
       </v-card-text>
  <router-link to="/confidance" >Политика конфиденциальности </router-link>
+ <br>
  <router-link to="/userpolitic" > Пользовательское соглашение</router-link>
       <v-card-text class="py-2 white--text text-center">
         <strong class="footerText">Адреса: г. Омск, ул. Волочаевская 19 к4 </strong>

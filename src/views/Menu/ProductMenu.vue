@@ -3,6 +3,9 @@
          <v-container fluid> 
             <v-row dense>
                 <v-col
+                xs="2"
+                
+        
                 v-for="products in productItems"
                 :key="products.id"        
                 > 

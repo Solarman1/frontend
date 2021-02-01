@@ -9,9 +9,13 @@
         >
         </v-img>
 
-        <v-card-title>
-         <div class="productName">{{product_data.name}}</div> 
-        </v-card-title>
+          <v-card-text>
+              <div class="productName">
+                {{product_data.name}}
+              </div>
+        
+          </v-card-text>
+    
 
         <v-card-subtitle>
           {{product_data.weight}}
@@ -101,33 +105,39 @@
 
 <style>
 
-/* .priceValue {
-  font-size: 25px;
+   .priceValue {
+  font-size: 35px;
 }
-.productName {
-  font-size: 15px;
-}  */
-@media (min-width: 900px) {
-  /* #cardMin {
-    display: none;
-  }
-  #cadMax {
-    display: block;
-  } */
-  /* .v-responsive__content{
-    size: 100px;
-  } */
+  .productName{
+/* font-size: 5vm;  */
+font-size: 23px;
+color: black;
+}
+/* @media (min-width: 900px) {
+
   .priceValue {
   font-size: 35px;
 }
   .productName{
   font-size: 18px;
 }
-} 
-/* @media (max-width: 500px) {
+}
+@media (max-width: 390px) {
+  
 
-  v-avatar{
-    size: 20;
+   /* .priceValue {
+  font-size: 35px;
+}
+  .productName{
+  font-size: 4.5vw; 
+}
+}
+@media (max-width: 350px) {
+#cardMax{
+    transform: scale(0.6);
+    
   }
+ 
 } */
+
 </style>
