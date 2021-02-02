@@ -248,7 +248,7 @@
                       <template v-slot:activator="{ on }">
                         <!-- <a
                           target="_blank"
-                          href="https://www.ochag55.ru/confidance"
+                          href="/confidance"
                           @click.stop
                           v-on="on"
                         >
@@ -281,6 +281,8 @@
 
                         </router-link>
                    
+
+
                       </template>
                       Открыть 
                     </v-tooltip>
@@ -290,12 +292,13 @@
               </v-checkbox>
             </v-container>
    
- 
+              <v-text class="red" v-if="valid == false">Для оформления заказа заполните пожалуйста все поля формы. </v-text>
          
                 <v-dialog
                     v-model="dialog"
                     persistent
                     max-width="290"
+                    v-if="valid"
                   >
                   <template v-slot:activator="{ on, attrs }">
                         <v-btn

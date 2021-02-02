@@ -22,6 +22,7 @@
         max-width="50"
         src="../../assets/phone-icon.png"
         ></v-img></a>
+        
       
       <strong class="subheading  ml-5 text-h5 text-center text-decoration-none">
        
