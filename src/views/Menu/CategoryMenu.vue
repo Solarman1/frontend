@@ -1,18 +1,18 @@
 <template>
     <div class="categoryMeny ">
-         <v-img
+         <!-- <v-img
               src='../../assets/meat.gif'
               height="300px"
               >
               
-        </v-img>
+        </v-img> -->
           <v-card
             class="pa-2"
             outlined
             shaped
             dark
           >
-            <div class="menuTitle"> Меню </div>
+            <div class="menuTitle"><h2> Меню</h2> </div>
           </v-card>
      
      
@@ -65,7 +65,7 @@ export default {
 </script>
 <style scoped>
 .menuTitle{
-  font-size: 5px;
+  font-size: 25px;
 }
 
 </style>

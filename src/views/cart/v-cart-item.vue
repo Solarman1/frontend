@@ -89,7 +89,7 @@ export default {
   font-size: 20px;
 }
 
-@media (max-width: 776px) {
+/* @media (max-width: 776px) {
   .price_p{
 font-size: 10px;
   }
@@ -98,6 +98,6 @@ font-size: 10px;
   .price_p{
 font-size: 25px;
   }
-}
+} */
 </style>
 

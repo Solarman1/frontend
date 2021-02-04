@@ -43,7 +43,7 @@
 	<p style="text-align: justify;">
 		<span style="font-size:14px;">Время доставки составляет 60-90 минут!!!!!</span></p>
 
- <iframe src="https://www.google.com/maps/d/embed?mid=1xG4EUMWYESEqMs34hJCpwZIhg52cM3CC" width="640" height="480"></iframe>
+ <iframe src="https://www.google.com/maps/d/embed?mid=1xG4EUMWYESEqMs34hJCpwZIhg52cM3CC" width="70%" height="480"></iframe>
 
 
 	<p style="text-align: justify;">

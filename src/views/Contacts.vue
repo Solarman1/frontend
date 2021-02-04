@@ -3,7 +3,7 @@
     class="mx-auto"
   >
   <v-card-title class="text--center">Контактная информация</v-card-title>
-  <iframe src="https://www.google.com/maps/d/embed?mid=17RREVn_a_BCFjCu94o5eMVm9AC2vsvhQ" width="640" height="480"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=17RREVn_a_BCFjCu94o5eMVm9AC2vsvhQ" width="70%" height="480"></iframe>
     <v-img
     >
       
