@@ -11,9 +11,10 @@
                       
                         :src="'http://api.ochag55.ru/storage/categoryImages/'+category_data.image"
                         height="250px"
+                        
                         >
 
-                        <v-card-title class="menuItem">
+                        <v-card-title class="menuItem" style = " text-shadow: 3px 5px 6px black;">
                         {{category_data.name}}
                         </v-card-title>
                         
