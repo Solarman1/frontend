@@ -51,52 +51,48 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
     
     
-  props: {
-      dopProduct_data: {
-        type: Object,
-        default() {
-          return {}
+    props: {
+        dopProduct_data: {
+            type: Object,
+            default() {
+            return {}
+            }
         }
-      }
-    },
-  computed: {
-      ...mapGetters([
-            'PRODUCTS',
-            'CART'
-        ]),
-//console.log(dopProduct_data[i]);
-        dopProductItemsValue()  {
-
-                //console.log(this.dopProduct_data.productId);
-             let dopNew = [];
-                let dopProductSorted = this.PRODUCTS.filter(item => item.id == this.dopProduct_data.dopProductId);
-                 dopProductSorted.forEach(element => {
-                  dopNew  = element;
-                });
-               
-          
-            // console.log('this');
-             console.log(dopNew);
-            return dopNew;
-            },
-  },
-
-  methods: {
-       ...mapActions([
-            'ADD_TO_CART'
-        ]),
-
-      addToCart() {
-        this.$emit('addToCart', this.dopProductItemsValue);
-        
-      },
-      productPage(id) {
-            this.$router.push({name: 'ProductPage', query: { 'product': id }}).catch(()=>{});
         },
-  },
+        
+    computed: {
+        ...mapGetters([
+                'PRODUCTS',
+                'CART'
+            ]),
+            dopProductItemsValue()  {
 
-  mounted(){
-         this.$set(this.dopProductItemsValue, 'quantity', 1);
+                let dopNew = [];
+                    let dopProductSorted = this.PRODUCTS.filter(item => item.id == this.dopProduct_data.dopProductId);
+                    dopProductSorted.forEach(element => {
+                    dopNew  = element;
+                    });
+
+                return dopNew;
+                },
     },
+
+    methods: {
+        ...mapActions([
+                'ADD_TO_CART'
+            ]),
+
+        addToCart() {
+            this.$emit('addToCart', this.dopProductItemsValue);
+            
+        },
+        productPage(id) {
+                this.$router.push({name: 'ProductPage', query: { 'product': id }}).catch(()=>{});
+            },
+    },
+
+    mounted(){
+            this.$set(this.dopProductItemsValue, 'quantity', 1);
+        },
 }
 </script>

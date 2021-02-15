@@ -1,18 +1,13 @@
 <template>
-
-    
      <v-card
       id="cardMax"
       class="mx-auto my-12" 
-      max-width="344" 
-      
+      max-width="344"     
       >
-      
-     
+         
       <div
         @click="productPage(product_data.id)"
       >
-      <!-- @click.stop="showProductDialog=true" -->
       <a>
       
         <v-img
@@ -74,17 +69,6 @@
       </div>
     </v-expand-transition>
 
-      <!-- <productDialog 
-
-        v-model="showProductDialog" 
-        :product_image="'https://api.ochag55.ru/storage/productImages/'+product_data.image"
-        :product_name="product_data.name"
-        :product_weight="product_data.weight"
-        :product_price="product_data.price"
-        :product_description="product_data.description"
-      
-      /> -->
-
     </v-card>
     
      
@@ -93,12 +77,10 @@
 
 
 <script>
-//import productDialog from './v-product-dialog';
 
   export default {
     name: "v-product-item",
     components: {
-      //productDialog,
     },
     props: {
       product_data: {
@@ -111,7 +93,6 @@
     data() {
       return {
         show: false,
-        //showProductDialog: false,
       }
     },
     computed: {},

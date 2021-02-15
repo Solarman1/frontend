@@ -83,13 +83,6 @@ import dopProduct from './v-product-page-dops';
 export default {
     data(){
         return {
-            product_id: 0,
-            product_name: '',
-            product_weight: 0,
-            product_price: 0,
-            product_description: '', 
-            info: null,
-            messages: [],
         }
     },
      components: {
@@ -112,21 +105,8 @@ export default {
         dopProductItems(){
             let dopProducts = this.DOPPRODUCTS.filter(item => item.productId == this.$route.query.product);
           
-
-            // let dops = dopProducts.map(value => {
-            //         return this.PRODUCTS.filter(item => item.id == value.dopProductId)
-            // });
-           
-           //console.log(dops);
-            
-            // console.log('in computed');
-            // console.log(this.DOPPRODUCTS);
-            // console.log('route: '+this.$route.query.product);
-            // console.log('end');
             return dopProducts;
-        }
-        
-        
+        }       
 
     },
 
@@ -151,15 +131,10 @@ export default {
     mounted(){
             if (!this.PRODUCTS.length) {
             this.GET_PRODUCTS_FROM_API();
-            
-            // console.log('this route -> ');
-            // console.log(this.$route.query.product);
             }
             if (!this.DOPPRODUCTS.length) {
              this.GET_DOPPRODUCTS_FROM_API();
             
-            // console.log('this route -> ');
-            // console.log(this.$route.query.product);
             }
             this.$set(this.dopProductItemsValue, 'quantity', 1);
         },

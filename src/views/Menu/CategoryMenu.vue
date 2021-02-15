@@ -15,11 +15,19 @@
             <div class="menuTitle"><h2> Меню</h2> </div>
           </v-card>
      
-     
          <v-container fluid>
             
             <v-row dense>
-             
+             <v-overlay
+              :opacity="1"
+              :value="overlay"
+            >
+              <v-progress-circular indeterminate size="64">
+                Loading...
+              </v-progress-circular>
+            </v-overlay>
+
+
                 <v-col
                 
                 v-for="categorys in CATEGORYS"
@@ -43,7 +51,8 @@ export default {
     name: "CategoryMenu",
     data(){
         return {
-            drawer: null
+            drawer: null,
+            overlay: true,
         }
     },
     computed:{
@@ -57,9 +66,10 @@ export default {
       ]),
     },
     mounted() {
-      if (!this.CATEGORYS.length) {
-        this.GET_CATEGORYS_FROM_API();
-    }
+        if (!this.CATEGORYS.length) {
+          this.GET_CATEGORYS_FROM_API();
+          this.overlay = false;
+      }
     }
 }
 </script>

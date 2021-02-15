@@ -454,10 +454,7 @@ export default {
         this.DELETE_FROM_CART(index)
       },
       validate () {
-        // console.log(this.formData);
-        //   console.log('endFormData');  
-          //console.log(this.cart_data);
-          
+
           for (let i = 0; i < this.cart_data.length; i++) {
             this.resBasket[i] = {
               orderId: null,
@@ -476,11 +473,7 @@ export default {
           tempResult = tempResult.reduce(function (sum, el) {
             return sum + el;
           })
-          //console.log(tempResult);
           this.formData.totalPrice = tempResult;
-
-        //  console.log(this.resBasket);
-        //  console.log(this.formData);
 
         if(this.$refs.form.validate())
         {
@@ -497,7 +490,6 @@ export default {
             this.resBasket.forEach(item => {
                   item.orderId = id;
             });
-                ///start basket and mail
             axios({
               method: 'post',
               url: 'https://api.ochag55.ru/api/basket',
@@ -507,10 +499,8 @@ export default {
                 this.sendMail();        
               })
             .catch(error => { 
-              //console.log('afeter post basket'+this.resBasket);
                 console.error(error)
             });
-                /// end axios basket and mail
             })
           .catch(error => { 
               console.error(error)
@@ -552,11 +542,4 @@ export default {
   }
 </script>
 <style>
-/* @media (max-width: 776px) {
-  .v-data-table > .v-data-table__wrapper > table{
-font-size: 20px;
-  }
-
-
-} */
 </style>
