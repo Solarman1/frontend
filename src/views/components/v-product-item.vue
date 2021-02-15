@@ -1,14 +1,20 @@
 <template>
 
-
-
-
+    
      <v-card
       id="cardMax"
-    class="mx-auto my-12" 
-    max-width="344" >
-    
-
+      class="mx-auto my-12" 
+      max-width="344" 
+      
+      >
+      
+     
+      <div
+        @click="productPage(product_data.id)"
+      >
+      <!-- @click.stop="showProductDialog=true" -->
+      <a>
+      
         <v-img
         :src="'https://api.ochag55.ru/storage/productImages/'+product_data.image"
         height="250px"
@@ -17,7 +23,9 @@
           <v-card-text>
               <div class="productName">
                 {{product_data.name}}
-              </div> 
+
+              </div>
+
           </v-card-text>
         <v-card-subtitle>
           {{product_data.weight}}
@@ -31,6 +39,10 @@
                 </div>            
                 </v-card-title>      
           </v-card-text>
+
+          </a>
+        </div>
+        
         <v-card-actions class="pb-5">
         <v-btn
             class="ml-5"
@@ -45,6 +57,7 @@
         icon
         text
         @click="show = !show"
+  
       >
       <strong > Состав </strong> 
         <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
@@ -61,9 +74,18 @@
       </div>
     </v-expand-transition>
 
-    
-    </v-card>  
+      <!-- <productDialog 
 
+        v-model="showProductDialog" 
+        :product_image="'https://api.ochag55.ru/storage/productImages/'+product_data.image"
+        :product_name="product_data.name"
+        :product_weight="product_data.weight"
+        :product_price="product_data.price"
+        :product_description="product_data.description"
+      
+      /> -->
+
+    </v-card>
     
      
 
@@ -71,9 +93,12 @@
 
 
 <script>
+//import productDialog from './v-product-dialog';
+
   export default {
     name: "v-product-item",
     components: {
+      //productDialog,
     },
     props: {
       product_data: {
@@ -86,6 +111,7 @@
     data() {
       return {
         show: false,
+        //showProductDialog: false,
       }
     },
     computed: {},
@@ -93,11 +119,16 @@
       addToCart() {
         this.$emit('addToCart', this.product_data);
         
-      }
+      },
+      productPage(id) {
+            this.$router.push({name: 'ProductPage', query: { 'product': id }}).catch(()=>{});
+        },
     },
     mounted(){
-      this.$set(this.product_data, 'quantity', 1);    
-    }
+      this.$set(this.product_data, 'quantity', 1);
+  
+    },
+    
   }
     
 </script>

@@ -5,6 +5,9 @@ export default {
     CATEGORYS(state){
         return state.categorys;
     },
+    DOPPRODUCTS(state){
+        return state.dopProducts;
+    },
     CART(state){
         return state.cart;
     },

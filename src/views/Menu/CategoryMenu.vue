@@ -67,5 +67,4 @@ export default {
 .menuTitle{
   font-size: 25px;
 }
-
 </style>

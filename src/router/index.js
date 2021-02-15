@@ -4,6 +4,7 @@ import VueMeta from 'vue-meta';
 //import Home from '../views/Home.vue'
 import Contacts from '../views/Contacts.vue'
 import ProductMenu from '../views/Menu/ProductMenu.vue'
+import ProductPage from '../views/components/v-product-page.vue'
 import CategoryMenu from '../views/Menu/CategoryMenu.vue'
 import Cart from '../views/cart/v-cart.vue'
 import PaymentInfo from '../views/Paymentinfo.vue'
@@ -26,6 +27,12 @@ Vue.use(VueMeta);
     path: '/menu',
     name: 'ProductMenu',
     component: ProductMenu,
+    props: true
+  },
+  {
+    path: '/productPage',
+    name: 'ProductPage',
+    component: ProductPage,
     props: true
   },
   {

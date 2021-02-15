@@ -34,4 +34,15 @@ export default{
             return error;
         })
     },
+    GET_DOPPRODUCTS_FROM_API({commit}){
+        return axios(`https://api.ochag55.ru/api/dops`, {
+            method: "GET"
+        }).then((dopProducts) => {
+            commit('SET_DOPPRODUCTS_TO_STATE', dopProducts.data);
+            return dopProducts;
+        }).catch((error) => {
+            console.log(error);
+            return error;
+        })
+    }
 }

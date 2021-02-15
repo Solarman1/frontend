@@ -5,6 +5,9 @@ export default{
     SET_CATEGORYS_TO_STATE: (state, categorys) => {
         state.categorys = categorys;
     },
+    SET_DOPPRODUCTS_TO_STATE: (state, dopProducts) => {
+        state.dopProducts = dopProducts;
+    },
     SET_CART: (state, product) => {
     let isProductExists = false;
     if (state.cart.length) {
