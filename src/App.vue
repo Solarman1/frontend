@@ -92,7 +92,7 @@ export default {
 }
 
 #inspire{
-   background-image: url("./assets/tree.jpg");
+   background-image: url("./assets/tree.webp");
    background-size: auto;
 }
 a{
