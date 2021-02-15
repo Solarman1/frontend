@@ -32,7 +32,7 @@
                 </v-card-title>
     
            <v-card-text>
-
+               
                 {{productItems[0].description}}
 
           </v-card-text>
@@ -91,39 +91,141 @@
 </v-col>
   
     <v-col>
-  <v-card
-    class="mx-auto"
-    max-width="344"
+        <v-card
+            class="mx-auto"
+            max-width="344"
 
-  >
-    <v-list-item three-line>
-      <v-list-item-content>
-        
-        <v-list-item-title class="headline mb-1">
-          Товар 1
-        </v-list-item-title>
-        <v-list-item-subtitle>Тут будет описание</v-list-item-subtitle>
-      </v-list-item-content>
+        >
+            <v-list-item three-line>
+            <v-list-item-content>
+                
+                <v-list-item-title class="headline mb-1">
+                Товар 1
+                </v-list-item-title>
+                <v-list-item-subtitle>Тут будет описание</v-list-item-subtitle>
+            </v-list-item-content>
 
-      <v-list-item-avatar
-        tile
-        size="80"
-        color="grey"
-      ></v-list-item-avatar>
-    </v-list-item>
+            <v-list-item-avatar
+                tile
+                size="80"
+                color="grey"
+            ></v-list-item-avatar>
+            </v-list-item>
 
-    <v-card-actions>
-      <v-btn
-        outlined
-        text
-        color="deep-orange darken-1"
-      >
-        Добавить в корзину
-        
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-</v-col>
+            <v-card-actions>
+            <v-btn
+                outlined
+                text
+                color="deep-orange darken-1"
+            >
+                Добавить в корзину
+                
+            </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-col>
+    <v-col>
+        <v-card
+            class="mx-auto"
+            max-width="344"
+
+        >
+            <v-list-item three-line>
+            <v-list-item-content>
+                
+                <v-list-item-title class="headline mb-1">
+                Товар 1
+                </v-list-item-title>
+                <v-list-item-subtitle>Тут будет описание</v-list-item-subtitle>
+            </v-list-item-content>
+
+            <v-list-item-avatar
+                tile
+                size="80"
+                color="grey"
+            ></v-list-item-avatar>
+            </v-list-item>
+
+            <v-card-actions>
+            <v-btn
+                outlined
+                text
+                color="deep-orange darken-1"
+            >
+                Добавить в корзину
+                
+            </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-col>
+    <v-col>
+        <v-card
+            class="mx-auto"
+            max-width="344"
+
+        >
+            <v-list-item three-line>
+            <v-list-item-content>
+                
+                <v-list-item-title class="headline mb-1">
+                Товар 1
+                </v-list-item-title>
+                <v-list-item-subtitle>Тут будет описание</v-list-item-subtitle>
+            </v-list-item-content>
+
+            <v-list-item-avatar
+                tile
+                size="80"
+                color="grey"
+            ></v-list-item-avatar>
+            </v-list-item>
+
+            <v-card-actions>
+            <v-btn
+                outlined
+                text
+                color="deep-orange darken-1"
+            >
+                Добавить в корзину
+                
+            </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-col>
+    <v-col>
+        <v-card
+            class="mx-auto"
+            max-width="344"
+
+        >
+            <v-list-item three-line>
+            <v-list-item-content>
+                
+                <v-list-item-title class="headline mb-1">
+                Товар 1
+                </v-list-item-title>
+                <v-list-item-subtitle>Тут будет описание</v-list-item-subtitle>
+            </v-list-item-content>
+
+            <v-list-item-avatar
+                tile
+                size="80"
+                color="grey"
+            ></v-list-item-avatar>
+            </v-list-item>
+
+            <v-card-actions>
+            <v-btn
+                outlined
+                text
+                color="deep-orange darken-1"
+            >
+                Добавить в корзину
+                
+            </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-col>
   </v-row>
 </v-card>
 
@@ -131,7 +233,8 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters, mapActions} from 'vuex';
+import axios from "axios";
 
 export default {
     data(){
@@ -141,6 +244,7 @@ export default {
             product_weight: 0,
             product_price: 0,
             product_description: '', 
+            info: null,
         }
     },
     props: {
@@ -180,7 +284,10 @@ export default {
             this.GET_PRODUCTS_FROM_API();
             // console.log('this route -> ');
             // console.log(this.$route.query.product);
-
+            axios
+            .get(`https://api.ochag55.ru/api/dops/${this.$route.query.product}`)
+            .then(response => (this.info = response));  
+            console.log(this.info);
         }
         },
 }
