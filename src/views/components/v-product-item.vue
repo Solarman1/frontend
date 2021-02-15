@@ -1,38 +1,37 @@
 <template>
+
+
+
+
      <v-card
       id="cardMax"
     class="mx-auto my-12" 
     max-width="344" >
+    
+
         <v-img
         :src="'https://api.ochag55.ru/storage/productImages/'+product_data.image"
         height="250px"
         >
         </v-img>
-
           <v-card-text>
               <div class="productName">
                 {{product_data.name}}
-              </div>
-        
+              </div> 
           </v-card-text>
-    
-
         <v-card-subtitle>
           {{product_data.weight}}
         </v-card-subtitle>
-          <v-card-text>
-              
+          <v-card-text>         
                 <v-card-title 
                 class="black--text"
                 >
-                <div class="priceValue"><strong class="green--text text--lighten-1">{{product_data.price}}  руб.</strong></div>
-                
-                </v-card-title>
-            
+                <div class="priceValue">
+                  <strong class="green--text text--lighten-1">{{product_data.price}}  руб.</strong>
+                </div>            
+                </v-card-title>      
           </v-card-text>
-
         <v-card-actions class="pb-5">
-
         <v-btn
             class="ml-5"
             color="deep-orange darken-1"
@@ -40,9 +39,7 @@
         >
             В корзину
         </v-btn>
-
-        <v-spacer></v-spacer>
-           
+        <v-spacer></v-spacer>         
        <v-btn
         class="mr-5"
         icon
@@ -63,6 +60,8 @@
         </v-card-text>
       </div>
     </v-expand-transition>
+
+    
     </v-card>  
 
     

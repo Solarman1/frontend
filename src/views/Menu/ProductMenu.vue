@@ -9,6 +9,9 @@
                 v-for="products in productItems"
                 :key="products.id"        
                 > 
+                
+                
+
                 <v-product-item 
                      :product_data="products"
                      @addToCart="addToCart" 
