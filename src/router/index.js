@@ -7,6 +7,7 @@ import ProductMenu from '../views/Menu/ProductMenu.vue'
 import ProductPage from '../views/components/v-product-page.vue'
 import CategoryMenu from '../views/Menu/CategoryMenu.vue'
 import Cart from '../views/cart/v-cart.vue'
+import LunchCalc from '../views/lunchcalc/calc.vue'
 import PaymentInfo from '../views/Paymentinfo.vue'
 import Confidance from '../views/Confidencpolitic.vue'
 import Userpolitic from '../views/Userpolitic.vue'
@@ -36,11 +37,14 @@ Vue.use(VueMeta);
     props: true
   },
   {
+    path: '/lunch',
+    name: 'LunchCalc',
+    component: LunchCalc,
+    props: true
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
