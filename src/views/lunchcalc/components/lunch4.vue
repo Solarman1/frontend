@@ -4,6 +4,13 @@
 
 <script>
 export default {
- 
+ props: {
+      product_data: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
+    },
 }
 </script>
