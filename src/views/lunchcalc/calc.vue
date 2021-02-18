@@ -4,11 +4,39 @@
         tile>
        <h2 class="text-center "> Конструктор бизнес-ланча </h2> 
        <h3  >По будням с 12:00 - 16:00 </h3> 
-       <v-row  dense
-       
-       >
+
+
+          <v-stepper v-model="e1">
+    <v-stepper-header>
+      <v-stepper-step
+        :complete="e1 > 1"
+        step="1"
+      >
+        Выберите набор
+      </v-stepper-step>
+
+      <v-divider></v-divider>
+
+      <v-stepper-step
+        :complete="e1 > 2"
+        step="2"
+      >
+        Выберите позиции из меню
+      </v-stepper-step>
+
+      <v-divider></v-divider>
+
+      <v-stepper-step step="3">
+        Завершите заказ
+      </v-stepper-step>
+    </v-stepper-header>
+
+    <v-stepper-items>
+      <v-stepper-content step="1">                
+        <v-row  dense
+        >
         <v-col class="d-flex justify-center mb-6">
-        <a @click="openCalc(1)">
+        <a @click="openCalc(1), e1 = 2" >
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
                 Комплекс 1  <v-spacer></v-spacer> <div class="green--text text--lighten-1">190 руб.</div>
@@ -30,7 +58,7 @@
         </v-col>
 
         <v-col class="d-flex justify-center mb-6">
-        <a @click="openCalc(2)">
+        <a @click="openCalc(2), e1 = 2">
         <v-card min-width="230" max-width="300px">
             <v-card-title>
                 Комплекс 2 <v-spacer></v-spacer> <div class="green--text text--lighten-1"> 250 руб. </div>
@@ -58,7 +86,7 @@
 
         <v-row>
         <v-col class="d-flex justify-center mb-6">
-        <a @click="openCalc(3)"> 
+        <a @click="openCalc(3), e1 = 2"> 
         <v-card min-width="230" max-width="300px">
             <v-card-title>
                 Комплекс 3   <v-spacer></v-spacer> <div class="green--text text--lighten-1">280 руб.</div>
@@ -84,7 +112,7 @@
         </v-col>
 
         <v-col  class="d-flex justify-center mb-6">
-        <a @click="openCalc(4)">
+        <a @click="openCalc(4), e1 = 2">
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
                 Комплекс 4  <v-spacer></v-spacer> <div class="green--text text--lighten-1">300 руб.</div> 
@@ -114,135 +142,173 @@
         </v-col>
         </v-row>
 
-        <v-card>
-                <lunch1 v-if="lunch1 == true" :salads_data="salads" :soups_data="soups" :drink_data="drink" />
-                <lunch2 v-if="lunch2 == true" :dopProduct_data="products" />
-                <lunch3 v-if="lunch3 == true" :dopProduct_data="products" />
-                <lunch4 v-if="lunch4 == true" :dopProduct_data="products" />
-        </v-card>
+      </v-stepper-content>
+
+      <v-stepper-content step="2">
+
+                <lunch1 v-if="lunch1 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="soups"   :garnir_data="[]" :skewer_data="[]" :drink_data="drink" />
+                <lunch1 v-if="lunch2 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="[]"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch3 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="[]" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch4 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+
+      </v-stepper-content>
+
+      <v-stepper-content step="3">
+        <v-card
+          class="mb-12"
+          color="grey lighten-1"
+          height="200px"
+        ></v-card>
+
+        <v-btn
+        color="primary"
+        @click="e1 = 2"
+        >
+                Назад
+        </v-btn>
+      </v-stepper-content>
+    </v-stepper-items>
+  </v-stepper>
 
   </v-card>
   
 </template>
 <script>
 import lunch1 from "../lunchcalc/components/lunch1";
-import lunch2 from "../lunchcalc/components/lunch2";
-import lunch3 from "../lunchcalc/components/lunch3";
-import lunch4 from "../lunchcalc/components/lunch4";
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
 
         components: {
                 lunch1,
-                lunch2,
-                lunch3,
-                lunch4,
         },
         data(){
                 return{
+                        e1: 1,
                         lunchType: 0,
                         lunch1: false,
                         lunch2: false,
                         lunch3: false,
                         lunch4: false,
-                        salads: {
-                                1: {
-                                        name:  'салат восточный с говядиной и гранатом',
+                        
+                        salads: [
+                                {
+                                        name:  'Салат восточный с говядиной и гранатом',
                                         description: 'говядина отварная, маринованная красная капуста, огурцы, гранат, чеснок, кинза, майонез, соус острый', 
                                 },
-                                2: {
-                                        name : 'салат летний',
+                                {
+                                        name : 'Салат летний',
                                         description: 'огурцы, помидоры, перец болгарский, зелень, лук красный, масло оливковое, базилик'
                                 },
-                                3: {
-                                        name: 'салат тбилиси',
+                                {
+                                        name: 'Салат тбилиси',
                                         description: 'говядина отварная, перец болгарский, фасоль, лук красный, грецкий орех, перец чили, кинза'
                                 }
-                        },
-                        soups: {
-                                1: {
+                        ],
+                        soups: [
+                                {
                                         name: 'Лагман',
                                         description: 'мякоть говядины, редька, перец болгарский, лук репчатый, морковь, сельдерей, чеснок, томатная паста'
                                 },
-                                2: {
-                                        namne: 'Харчо',
+                                {
+                                        name: 'Харчо',
                                         description: 'говядина, рис, помидор, перец болгарский, перец чили, кинза, лук репчатый, чеснок'
                                 },
-                                3: {
+                                {
                                         name: 'Уха тройная (семга, судак, сазан)',
                                         description: 'семга, лук, морковь, помидоры, перец болгасркий, зелень, картофель, сазан, судак'
                                 },
-                                4: {
+                                {
                                         name: 'Шурпа',
                                         description: 'картофель, морковь, помидоры, лук репчатый, перец болгарский, баранина'
                                 }
-                        },
-                        garnir: {
-                                1: {
+                        ],
+                        garnir: [
+                                {
                                         name: 'Булгур с грибами'
                                 },
-                                2: {
+                                {
                                         name: 'Гречка'
                                 },
-                                3: {
+                                {
                                         name: 'Картофельные дольки'
                                 },
-                                4: {
+                                {
                                         name: 'Рис с овощами'
                                 },
-                                5: {
+                                {
                                         name: 'Фасоль с грибами'
                                 },
-                                6: {
+                                {
                                         name: 'Фри'
                                 }
-                        },
-                        skewer: {
-                                1: {
+                        ],
+                        skewer: [
+                                {
                                         name: 'Шашлык из Сазана',
                                         description: 'филе сазана, лимоны, соус чесночный'
                                 },
-                                2: {
+                                {
                                         name: 'Шашлык из куриной грудки',
                                         description: 'шашлык из куриной грудки, лук репчатый, соус томатный, зелень'
                                 },
-                                3: {
+                                {
                                         name: 'Шашлык из свиной вырезки',
                                         description: 'свинная вырезка, лук репчатый, соус томатный, зелень'
                                 },
-                                4: {
+                                {
                                         name: 'Печень телячья',
                                         description: 'печень телячья, курдюк, лук репчатый, соус томатный, зелень'
                                 },
-                                5: {
+                                {
                                         name: 'Кебаб из судака',
                                         description: 'фарш из судака, соус чесночный, зелень, лимоны'
                                 },
-                                6: {
+                                {
                                         name: 'Кебаб из курицы',
                                         description: 'фарш куриный, соус томатный, лук репчатый, зелень'
                                 },
-                        },
-                        drink: {
-                                1: {
-                                        name: 'Чай зеленый, черный'
+                        ],
+                        drink: [
+                                {
+                                        name: 'Чай зеленый'
                                 },
-                                2: {
+                                {
                                         name: 'Чай черный'
                                 },
-                                3: {
+                                {
                                         name: 'Морс клюква'
                                 },
-                                4: {
+                                {
                                         name: 'Морс облепиха'
                                 },
-                                5: {
+                                {
                                         name: 'Морс смородина'
                                 },
-                        }
+                        ]
                 }
         },
+        computed: {
+                ...mapGetters([
+                'CART'
+                ]),      
+
+        },
         methods:{
+                ...mapActions([
+                        'ADD_TO_CART'
+                ]),
+
+                addToCart(data){
+                        this.ADD_TO_CART(data).
+                        then(() => {
+                                let timeStamp = Date.now().toLocaleString();
+                                this.messages.unshift({
+                                        name: 'Товар добавлен', id: timeStamp
+                                        })
+                        })
+                },
+
                 openCalc(lunchType){
                         switch(lunchType)
                         {
@@ -271,7 +337,15 @@ export default {
                         this.lunch2 = false;
                         this.lunch3 = false;
                         this.lunch4 = false;
-                }
+                },
+                nextPage()
+                {
+                        this.e1 = 3;
+                },
+                backPage()
+                {
+                        this.e1 = 1;  
+                },
         },
 }
 </script>

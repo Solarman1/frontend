@@ -18,14 +18,14 @@
          <v-container fluid>
             
             <v-row dense>
-             <v-overlay
+             <!-- <v-overlay
               :opacity="1"
               :value="overlay"
             >
               <v-progress-circular indeterminate size="64">
                 Loading...
               </v-progress-circular>
-            </v-overlay>
+            </v-overlay> -->
 
 
                 <v-col

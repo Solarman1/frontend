@@ -54,21 +54,17 @@
         С этим товаром рекомендуют  
     </v-banner> 
     </div>
-    <v-row>         
-   
-                <v-col
-                    v-for="products in dopProductItems"
-                    :key="products.id"  
-                > 
-                
-                
+    <v-row>           
+            <v-col
+                v-for="products in dopProductItems"
+                :key="products.id"  
+            > 
 
                 <dopProduct 
                     :dopProduct_data="products"
                      @addToCart="addToCart" 
                 />
             </v-col>
-    
   </v-row>
 </v-card>
 

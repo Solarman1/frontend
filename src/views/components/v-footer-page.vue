@@ -34,8 +34,8 @@
  <br>
  <router-link to="/userpolitic" > Пользовательское соглашение</router-link>
       <v-card-text class="py-2 white--text text-center">
-        <strong class="footerText">Адреса: г. Омск, ул. Волочаевская 19 к4 </strong>
-        <strong class="footerText">, ул. Карла Либкнехта, 6</strong>
+        <p class="footerText">Адреса: г. Омск, ул. Волочаевская 19 к4
+      , ул. Карла Либкнехта, 6</p>
       </v-card-text>
     </v-card>
   
@@ -51,8 +51,3 @@ export default {
     },
 }
 </script>
-<style>
-.footerText{
-  font-size: 20px;
-}
-</style>
