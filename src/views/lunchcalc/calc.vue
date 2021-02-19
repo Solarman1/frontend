@@ -7,13 +7,13 @@
 
 
           <v-stepper v-model="e1">
-    <v-stepper-header>
-      <v-stepper-step
-        :complete="e1 > 1"
-        step="1"
-      >
-        Выберите набор
-      </v-stepper-step>
+                <v-stepper-header>
+                        <v-stepper-step
+                                :complete="e1 > 1"
+                                step="1"
+                        >
+                        Выберите набор
+                        </v-stepper-step>
 
       <v-divider></v-divider>
 
@@ -146,25 +146,59 @@
 
       <v-stepper-content step="2">
 
-                <lunch1 v-if="lunch1 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="[]" :skewer_data="[]" :drink_data="drink" />
-                <lunch1 v-if="lunch2 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="[]"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
-                <lunch1 v-if="lunch3 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="[]" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
-                <lunch1 v-if="lunch4 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch1 == true" @nextPage="nextPage()" @backPage="backPage" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="[]" :skewer_data="[]" :drink_data="drink" />
+                <lunch1 v-if="lunch2 == true" @nextPage="nextPage()" @backPage="backPage" @addFormData="getFormData" :salads_data="salads" :soups_data="[]"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch3 == true" @nextPage="nextPage()" @backPage="backPage" @addFormData="getFormData" :salads_data="[]" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch4 == true" @nextPage="nextPage()" @backPage="backPage" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
 
       </v-stepper-content>
 
       <v-stepper-content step="3">
         <v-card
           class="mb-12"
-          color="grey lighten-1"
-          height="200px"
+          
         >
-        {{formData}}
+        <v-card-text class="black--text"><h2>Обед готов</h2></v-card-text>
+
+        <v-simple-table>
+                <template v-slot:default>
+                <thead>
+                        <tr>
+                        <th>
+                        Тип
+                        </th>
+                        <th >
+                        Цена
+                        </th>
+                         <th>
+                        Состав обеда
+                        </th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                                <td>{{formData.name}}</td>
+                                <td>{{formData.price}} руб.</td>
+                                <td>{{formData.description}} руб.</td>
+                                <!-- <td>{{formData.description.salad}}, {{formData.description.soup}},  {{formData.description.garnir}}, {{formData.description.skewer}}, {{formData.description.drink}}</td>     -->
+                        </tr>
+                        <v-btn
+                                class="ml-5"
+                                color="deep-orange darken-1"
+                                @click="addToCart(formData)"
+                                >
+                                        В корзину
+                        </v-btn>
+                        
+                </tbody>
+                </template>
+        </v-simple-table>  
+        
         </v-card>
 
         <v-btn
         color="primary"
-        @click="e1 = 2"
+        @click="backPage(2)"
         >
                 Назад
         </v-btn>
@@ -187,7 +221,10 @@ export default {
         data(){
                 return{
                         formData: {
-                                
+                                id: 0,
+                                name: '',
+                                description: '',
+                                price: 0,
                         },
                         e1: 1,
                         lunchType: 0,
@@ -305,13 +342,7 @@ export default {
                 ]),
 
                 addToCart(data){
-                        this.ADD_TO_CART(data).
-                        then(() => {
-                                let timeStamp = Date.now().toLocaleString();
-                                this.messages.unshift({
-                                        name: 'Товар добавлен', id: timeStamp
-                                        })
-                        })
+                        this.ADD_TO_CART(data);
                 },
 
                 openCalc(lunchType){
@@ -319,18 +350,30 @@ export default {
                         {
                                 case 1:
                                         this.closeOtherLunch();
+                                        this.formData.id    = 1;
+                                        this.formData.name  = 'Комплекс 1';
+                                        this.formData.price = 190; 
                                         this.lunch1 = true;
                                         break;
                                 case 2:
                                         this.closeOtherLunch();
+                                        this.formData.id    = 2;
+                                        this.formData.name  = 'Комплекс 2';
+                                        this.formData.price = 250; 
                                         this.lunch2 = true;
                                         break;
                                 case 3: 
                                         this.closeOtherLunch();
+                                        this.formData.id    = 3;
+                                        this.formData.name  = 'Комплекс 3';
+                                        this.formData.price = 280; 
                                         this.lunch3 = true;
                                         break;
                                 case 4:
                                         this.closeOtherLunch();
+                                        this.formData.id    = 4;
+                                        this.formData.name  = 'Комплекс 4';
+                                        this.formData.price = 300;
                                         this.lunch4 = true;
                                         break;
                         }
@@ -347,14 +390,30 @@ export default {
                 {
                         this.e1 = 3;
                 },
-                backPage()
+                backPage(page)
                 {
-                        this.e1 = 1;  
+                        if(page == 1)
+                        {
+                                // this.formData.description.salad  = '';
+                                // this.formData.description.soup   = '';
+                                // this.formData.description.garnir = '';
+                                // this.formData.description.skewer = '';
+                                // this.formData.description.drink  = '';
+                                this.formData.description  = '';
+                        }
+                        this.e1 = page;  
                 },
                 getFormData(data)
                 {
-                        this.formData = data;                
+                        
+                        let newData = data.soup +", "+data.salad+", "+data.garnir+", "+data.skewer+", "+data.drink;
+                        console.log(newData);
+                        this.formData.description = newData; 
+                        //console.log(this.formData);               
                 }
+        },
+        mounted(){
+            this.$set(this.formData, 'quantity', 1);
         },
 }
 </script>

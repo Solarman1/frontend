@@ -158,11 +158,11 @@ export default {
     data(){
       return {
          formData: {
-           salad:   '',
-           soup:    '',
-           garnir:  '',
-           skewer:  '',
-           drink:   '',           
+           salad:   ' ',
+           soup:    ' ',
+           garnir:  ' ',
+           skewer:  ' ',
+           drink:   ' ',           
          }
       }
     },
@@ -219,7 +219,7 @@ export default {
         },
         backPage()
         {
-          this.$emit('backPage');
+          this.$emit('backPage', 1);
         },
         addFormData()
         {

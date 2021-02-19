@@ -14,7 +14,7 @@
                  <v-card-text class="headline" >{{cart_item_data.name}}</v-card-text>
                    
                        <v-card-subtitle>
-                <v-img 
+                <v-img v-if="cart_item_data.image"
                 max-height="110"
                 max-width="250"
                 :src="'http://api.ochag55.ru/storage/productImages/'+cart_item_data.image">
@@ -26,7 +26,8 @@
              </div>
                     
                   <v-card-title >Цена: {{cart_item_data.price}} руб.</v-card-title>
-
+                  <v-card-title >Состав: {{cart_item_data.description}}</v-card-title>
+                  
                    <v-card-actions right>Количество:
                       <span class="quantity__btn" @click="decrementItem"><v-icon>mdi-minus</v-icon></span> 
                          {{cart_item_data.quantity}} 

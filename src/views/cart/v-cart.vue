@@ -292,7 +292,7 @@
               </v-checkbox>
             </v-container>
    
-              <v-text class="red" v-if="valid == false">Для оформления заказа заполните пожалуйста все поля формы. </v-text>
+              <v-card-text class="red" v-if="valid == false">Для оформления заказа заполните пожалуйста все поля формы. </v-card-text>
          
                 <v-dialog
                     v-model="dialog"
