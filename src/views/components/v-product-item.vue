@@ -98,17 +98,15 @@
     computed: {},
     methods: {
       addToCart() {
-        this.$emit('addToCart', this.product_data);
-        
+        this.$emit('addToCart', this.product_data);     
       },
       productPage(id) {
             this.$router.push({name: 'ProductPage', query: { 'product': id }}).catch(()=>{});
         },
-    },
-    mounted(){
-      this.$set(this.product_data, 'quantity', 1);
-  
-    },
+      },
+      mounted(){
+        this.$set(this.product_data, 'quantity', 1);
+      },
     
   }
     
@@ -120,35 +118,9 @@
   font-size: 35px;
 }
   .productName{
-/* font-size: 5vm;  */
 font-size: 23px;
 color: black;
 }
-/* @media (min-width: 900px) {
 
-  .priceValue {
-  font-size: 35px;
-}
-  .productName{
-  font-size: 18px;
-}
-}
-@media (max-width: 390px) {
-  
-
-   /* .priceValue {
-  font-size: 35px;
-}
-  .productName{
-  font-size: 4.5vw; 
-}
-}
-@media (max-width: 350px) {
-#cardMax{
-    transform: scale(0.6);
-    
-  }
- 
-} */
 
 </style>

@@ -11,7 +11,7 @@
           <div v-for="item in salads_data"
               :key="item.name" >
             <v-container fluid >            
-                <v-radio-group v-model="radioGroup">
+                <v-radio-group v-model="formData.salad">
                 <v-radio
                   color="success"
                   :value="item.name"
@@ -36,7 +36,7 @@
           <div v-for="item in soups_data"
               :key="item.name" >
             <v-container fluid >
-                <v-radio-group v-model="radioGroup2">
+                <v-radio-group v-model="formData.soup">
                 <v-radio
                   color="orange"
                   :value="item.name"
@@ -61,7 +61,7 @@
           <div v-for="item in garnir_data"
               :key="item.name" >
             <v-container fluid >
-                <v-radio-group v-model="radioGroup3">
+                <v-radio-group v-model="formData.garnir">
                 <v-radio
                   color="deep-orange"
                   :value="item.name"
@@ -86,7 +86,7 @@
           <div v-for="item in skewer_data"
               :key="item.name" >
             <v-container fluid >
-                <v-radio-group v-model="radioGroup4">
+                <v-radio-group v-model="formData.skewer">
                 <v-radio
                   color="red"
                   :value="item.name"
@@ -111,7 +111,7 @@
             <div v-for="item in drink_data"
                 :key="item.name" >
               <v-container fluid >
-                  <v-radio-group v-model="radioGroup5">
+                  <v-radio-group v-model="formData.drink">
                   <v-radio
                     color="teal"
                     :value="item.name"
@@ -157,11 +157,13 @@
 export default {
     data(){
       return {
-         radioGroup: 1,
-         radioGroup2: 1,
-         radioGroup3: 1,
-         radioGroup4: 1,
-         radioGroup5: 1,
+         formData: {
+           salad:   '',
+           soup:    '',
+           garnir:  '',
+           skewer:  '',
+           drink:   '',           
+         }
       }
     },
     props: {
@@ -212,12 +214,17 @@ export default {
         },
         nextPage()
         {
+          this.addFormData();
           this.$emit('nextPage');
         },
         backPage()
         {
           this.$emit('backPage');
-        }
+        },
+        addFormData()
+        {
+          this.$emit('addFormData', this.formData);
+        },
     },
 }
 </script>

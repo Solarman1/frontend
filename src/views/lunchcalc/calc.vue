@@ -146,10 +146,10 @@
 
       <v-stepper-content step="2">
 
-                <lunch1 v-if="lunch1 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="soups"   :garnir_data="[]" :skewer_data="[]" :drink_data="drink" />
-                <lunch1 v-if="lunch2 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="[]"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
-                <lunch1 v-if="lunch3 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="[]" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
-                <lunch1 v-if="lunch4 == true" @nextPage="nextPage()" @backPage="backPage()" :salads_data="salads" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch1 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="[]" :skewer_data="[]" :drink_data="drink" />
+                <lunch1 v-if="lunch2 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="[]"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch3 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="[]" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
+                <lunch1 v-if="lunch4 == true" @nextPage="nextPage()" @backPage="backPage()" @addFormData="getFormData" :salads_data="salads" :soups_data="soups"   :garnir_data="garnir" :skewer_data="skewer" :drink_data="drink" />
 
       </v-stepper-content>
 
@@ -158,7 +158,9 @@
           class="mb-12"
           color="grey lighten-1"
           height="200px"
-        ></v-card>
+        >
+        {{formData}}
+        </v-card>
 
         <v-btn
         color="primary"
@@ -184,6 +186,9 @@ export default {
         },
         data(){
                 return{
+                        formData: {
+                                
+                        },
                         e1: 1,
                         lunchType: 0,
                         lunch1: false,
@@ -346,6 +351,10 @@ export default {
                 {
                         this.e1 = 1;  
                 },
+                getFormData(data)
+                {
+                        this.formData = data;                
+                }
         },
 }
 </script>
