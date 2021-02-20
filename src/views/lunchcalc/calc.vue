@@ -179,7 +179,7 @@
                         <tr>
                                 <td>{{formData.name}}</td>
                                 <td>{{formData.price}} руб.</td>
-                                <td>{{formData.description}} руб.</td>
+                                <td>{{formData.description}}</td>
                                 <!-- <td>{{formData.description.salad}}, {{formData.description.soup}},  {{formData.description.garnir}}, {{formData.description.skewer}}, {{formData.description.drink}}</td>     -->
                         </tr>
                         <v-btn
@@ -225,6 +225,7 @@ export default {
                                 name: '',
                                 description: '',
                                 price: 0,
+                                quantity: 1,
                         },
                         e1: 1,
                         lunchType: 0,
@@ -399,21 +400,24 @@ export default {
                                 // this.formData.description.garnir = '';
                                 // this.formData.description.skewer = '';
                                 // this.formData.description.drink  = '';
+                                console.log(this.formData.description);
                                 this.formData.description  = '';
+                                console.log(this.formData.description);
                         }
+                        
                         this.e1 = page;  
                 },
                 getFormData(data)
                 {
                         
                         let newData = data.soup +", "+data.salad+", "+data.garnir+", "+data.skewer+", "+data.drink;
-                        console.log(newData);
+                       
                         this.formData.description = newData; 
                         //console.log(this.formData);               
                 }
         },
-        mounted(){
-            this.$set(this.formData, 'quantity', 1);
-        },
+        // mounted(){
+        //     this.$set(this.formData, 'quantity', 1);
+        // },
 }
 </script>

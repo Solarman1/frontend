@@ -158,11 +158,11 @@ export default {
     data(){
       return {
          formData: {
-           salad:   ' ',
-           soup:    ' ',
-           garnir:  ' ',
-           skewer:  ' ',
-           drink:   ' ',           
+           salad:   '',
+           soup:    '',
+           garnir:  '',
+           skewer:  '',
+           drink:   '',           
          }
       }
     },
@@ -202,16 +202,6 @@ export default {
        
     },
     methods: {
-        getProducItems(data)
-        {
-          let res = data.map(function(item){
-            console.log(item.name);
-            return item.name;
-          });
-          //this.salads = res;
-          console.log(res);
-          return res;
-        },
         nextPage()
         {
           this.addFormData();
