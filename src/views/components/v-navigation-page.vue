@@ -113,7 +113,7 @@ export default {
         .then((response)=>{
             if(response.data)
             {
-                console.log('data is true');
+                //console.log('data is true');
             }
         }),
         eventEmitter.$on('changeDrawer', () => {

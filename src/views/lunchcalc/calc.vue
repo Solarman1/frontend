@@ -179,7 +179,7 @@
                         <tr>
                                 <td>{{formData.name}}</td>
                                 <td>{{formData.price}} руб.</td>
-                                <td>{{formData.description}}</td>
+                                <td>{{formData.description}} руб.</td>
                                 <!-- <td>{{formData.description.salad}}, {{formData.description.soup}},  {{formData.description.garnir}}, {{formData.description.skewer}}, {{formData.description.drink}}</td>     -->
                         </tr>
                         <v-btn
@@ -225,7 +225,6 @@ export default {
                                 name: '',
                                 description: '',
                                 price: 0,
-                                quantity: 1,
                         },
                         e1: 1,
                         lunchType: 0,
@@ -236,96 +235,120 @@ export default {
                         
                         salads: [
                                 {
+                                        id: 1,
                                         name:  'Салат восточный с говядиной и гранатом',
                                         description: 'говядина отварная, маринованная красная капуста, огурцы, гранат, чеснок, кинза, майонез, соус острый', 
                                 },
                                 {
+                                        id: 2,
                                         name : 'Салат летний',
                                         description: 'огурцы, помидоры, перец болгарский, зелень, лук красный, масло оливковое, базилик'
                                 },
                                 {
+                                        id: 3,
                                         name: 'Салат тбилиси',
                                         description: 'говядина отварная, перец болгарский, фасоль, лук красный, грецкий орех, перец чили, кинза'
                                 }
                         ],
                         soups: [
                                 {
+                                        id: 4,
                                         name: 'Лагман',
                                         description: 'мякоть говядины, редька, перец болгарский, лук репчатый, морковь, сельдерей, чеснок, томатная паста'
                                 },
                                 {
+                                        id: 5,
                                         name: 'Харчо',
                                         description: 'говядина, рис, помидор, перец болгарский, перец чили, кинза, лук репчатый, чеснок'
                                 },
                                 {
+                                        id: 6,
                                         name: 'Уха тройная (семга, судак, сазан)',
                                         description: 'семга, лук, морковь, помидоры, перец болгасркий, зелень, картофель, сазан, судак'
                                 },
                                 {
+                                        id: 7,
                                         name: 'Шурпа',
                                         description: 'картофель, морковь, помидоры, лук репчатый, перец болгарский, баранина'
                                 }
                         ],
                         garnir: [
                                 {
+                                        id: 8,
                                         name: 'Булгур с грибами'
                                 },
                                 {
+                                        id: 9,
                                         name: 'Гречка'
                                 },
                                 {
+                                        id: 10,
                                         name: 'Картофельные дольки'
                                 },
                                 {
+                                        id: 11,
                                         name: 'Рис с овощами'
                                 },
                                 {
+                                        id: 12,
                                         name: 'Фасоль с грибами'
                                 },
                                 {
+                                        id: 13,
                                         name: 'Фри'
                                 }
                         ],
                         skewer: [
                                 {
+                                        id: 14,
                                         name: 'Шашлык из Сазана',
                                         description: 'филе сазана, лимоны, соус чесночный'
                                 },
                                 {
+                                        id: 15,
                                         name: 'Шашлык из куриной грудки',
                                         description: 'шашлык из куриной грудки, лук репчатый, соус томатный, зелень'
                                 },
                                 {
+                                        id: 16,
                                         name: 'Шашлык из свиной вырезки',
                                         description: 'свинная вырезка, лук репчатый, соус томатный, зелень'
                                 },
                                 {
+                                        id: 17,
                                         name: 'Печень телячья',
                                         description: 'печень телячья, курдюк, лук репчатый, соус томатный, зелень'
                                 },
                                 {
+                                        id: 18,
                                         name: 'Кебаб из судака',
                                         description: 'фарш из судака, соус чесночный, зелень, лимоны'
                                 },
                                 {
+                                        id: 19,
                                         name: 'Кебаб из курицы',
                                         description: 'фарш куриный, соус томатный, лук репчатый, зелень'
                                 },
                         ],
                         drink: [
                                 {
+                                        id: 20,
                                         name: 'Чай зеленый'
                                 },
                                 {
+                                        id: 21,
                                         name: 'Чай черный'
                                 },
                                 {
+                                        id: 22,
                                         name: 'Морс клюква'
                                 },
                                 {
+                                        id: 23,
                                         name: 'Морс облепиха'
                                 },
                                 {
+                                        id: 24,
                                         name: 'Морс смородина'
                                 },
                         ]
@@ -400,24 +423,21 @@ export default {
                                 // this.formData.description.garnir = '';
                                 // this.formData.description.skewer = '';
                                 // this.formData.description.drink  = '';
-                                console.log(this.formData.description);
                                 this.formData.description  = '';
-                                console.log(this.formData.description);
                         }
-                        
                         this.e1 = page;  
                 },
                 getFormData(data)
                 {
-                        
+                        //console.log(data);
                         let newData = data.soup +", "+data.salad+", "+data.garnir+", "+data.skewer+", "+data.drink;
-                       
+                        //console.log(newData);
                         this.formData.description = newData; 
                         //console.log(this.formData);               
                 }
         },
-        // mounted(){
-        //     this.$set(this.formData, 'quantity', 1);
-        // },
+        mounted(){
+            this.$set(this.formData, 'quantity', 1);
+        },
 }
 </script>

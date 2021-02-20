@@ -17,6 +17,7 @@
                   :value="item.name"
                 >
                   <template v-slot:label>
+                    <input type="hidden" :value="item.id">
                     <div><strong class="success--text">{{item.name}}</strong></div>
                   </template>
                 </v-radio>
@@ -42,6 +43,7 @@
                   :value="item.name"
                 >
                   <template v-slot:label>
+                    <input type="hidden" :value="item.id">
                     <div><strong class="orange--text">{{item.name}}</strong></div>
                   </template>
                 </v-radio>
@@ -67,6 +69,7 @@
                   :value="item.name"
                 >
                   <template v-slot:label>
+                    <input type="hidden" :value="item.id">
                     <div><strong class="deep-orange--text">{{item.name}}</strong></div>
                   </template>
                 </v-radio>
@@ -92,12 +95,15 @@
                   :value="item.name"
                 >
                   <template v-slot:label>
+                    <input type="hidden" :value="item.id">
                     <div><strong class="red--text">{{item.name}}</strong></div>
                   </template>
                 </v-radio>
                 <v-card-text>{{ item.description}}</v-card-text>
-              </v-radio-group>            
+              </v-radio-group>   
+                     
             </v-container>
+            
           </div>
         </v-card>
       </v-col>
@@ -111,19 +117,33 @@
             <div v-for="item in drink_data"
                 :key="item.name" >
               <v-container fluid >
+                 <!-- <input v-model="formData.drink" type="hidden" :value="item.id"> -->
+                 <v-input
+                   
+                    v-model="formData.drinkId" :value="item.id"
+                  >
+                  {{item.id}}
+                  </v-input>
+
+                  
+                  
                   <v-radio-group v-model="formData.drink">
                   <v-radio
                     color="teal"
                     :value="item.name"
                   >
                   <template v-slot:label>
+                    
                     <div><strong class="teal--text">{{item.name}}</strong></div>
                   </template>
                   </v-radio>
                   <v-card-text>{{item.description}}</v-card-text>
-                </v-radio-group>            
+                    
+                </v-radio-group>
+                      
               </v-container>
             </div>
+            
           </v-card> 
       </v-col>
 
@@ -158,11 +178,17 @@ export default {
     data(){
       return {
          formData: {
-           salad:   '',
-           soup:    '',
-           garnir:  '',
-           skewer:  '',
-           drink:   '',           
+           id:        0,
+           salad:     '',
+           saladId:   0,
+           soup:      '',
+           soupId:    0,
+           garnir:    '',
+           garnirId:  0,
+           skewer:    '',
+           skewerId:  0,
+           drink:     '',
+           drinkId:   0,           
          }
       }
     },
@@ -213,6 +239,8 @@ export default {
         },
         addFormData()
         {
+          console.log('in add func');
+          console.log(this.formData.drinkId);
           this.$emit('addFormData', this.formData);
         },
     },
