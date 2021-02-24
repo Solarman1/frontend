@@ -180,7 +180,6 @@
                                 <td>{{formData.name}}</td>
                                 <td>{{formData.price}} руб.</td>
                                 <td>{{formData.description}}</td>
-                                <!-- <td>{{formData.description.salad}}, {{formData.description.soup}},  {{formData.description.garnir}}, {{formData.description.skewer}}, {{formData.description.drink}}</td>     -->
                         </tr>
                         <v-btn
                                 class="ml-5"
@@ -417,15 +416,6 @@ export default {
                 },
                 backPage(page)
                 {
-                        if(page == 2)
-                        {
-                                for(let key in this.formData)
-                                {
-                                        this.formData[key] = '';
-                                }
-                        }
-
-                        console.log(this.formData);
                         this.e1 = page;  
                 },
                 getFormData(data)

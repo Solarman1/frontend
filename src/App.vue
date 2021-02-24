@@ -92,8 +92,8 @@ export default {
 }
 
 #inspire{
-   background-image: url("./assets/tree.webp");
-   background-size: auto;
+  background-image: url("./assets/tree.webp");
+  background-size: cover;
 }
 a{
   background-color: transparent;

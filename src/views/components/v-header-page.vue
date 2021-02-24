@@ -10,7 +10,7 @@
        <v-img
         max-height="150"
         max-width="50"
-        src="../../assets/ochag_grill.png"
+        src="../../assets/ochag_grill.webp"
         >
         </v-img>
       </router-link>
