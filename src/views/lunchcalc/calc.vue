@@ -179,7 +179,7 @@
                         <tr>
                                 <td>{{formData.name}}</td>
                                 <td>{{formData.price}} руб.</td>
-                                <td>{{formData.description}} руб.</td>
+                                <td>{{formData.description}}</td>
                                 <!-- <td>{{formData.description.salad}}, {{formData.description.soup}},  {{formData.description.garnir}}, {{formData.description.skewer}}, {{formData.description.drink}}</td>     -->
                         </tr>
                         <v-btn
@@ -202,6 +202,7 @@
         >
                 Назад
         </v-btn>
+
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
@@ -374,28 +375,28 @@ export default {
                         {
                                 case 1:
                                         this.closeOtherLunch();
-                                        this.formData.id    = 1;
+                                        this.formData.id    = 301;
                                         this.formData.name  = 'Комплекс 1';
                                         this.formData.price = 190; 
                                         this.lunch1 = true;
                                         break;
                                 case 2:
                                         this.closeOtherLunch();
-                                        this.formData.id    = 2;
+                                        this.formData.id    = 302;
                                         this.formData.name  = 'Комплекс 2';
                                         this.formData.price = 250; 
                                         this.lunch2 = true;
                                         break;
                                 case 3: 
                                         this.closeOtherLunch();
-                                        this.formData.id    = 3;
+                                        this.formData.id    = 303;
                                         this.formData.name  = 'Комплекс 3';
                                         this.formData.price = 280; 
                                         this.lunch3 = true;
                                         break;
                                 case 4:
                                         this.closeOtherLunch();
-                                        this.formData.id    = 4;
+                                        this.formData.id    = 304;
                                         this.formData.name  = 'Комплекс 4';
                                         this.formData.price = 300;
                                         this.lunch4 = true;
@@ -416,24 +417,85 @@ export default {
                 },
                 backPage(page)
                 {
-                        if(page == 1)
+                        if(page == 2)
                         {
-                                // this.formData.description.salad  = '';
-                                // this.formData.description.soup   = '';
-                                // this.formData.description.garnir = '';
-                                // this.formData.description.skewer = '';
-                                // this.formData.description.drink  = '';
-                                this.formData.description  = '';
+                                for(let key in this.formData)
+                                {
+                                        this.formData[key] = '';
+                                }
                         }
+
+                        console.log(this.formData);
                         this.e1 = page;  
                 },
                 getFormData(data)
                 {
-                        //console.log(data);
-                        let newData = data.soup +", "+data.salad+", "+data.garnir+", "+data.skewer+", "+data.drink;
-                        //console.log(newData);
-                        this.formData.description = newData; 
-                        //console.log(this.formData);               
+                        let saladData   = 0;
+                        let soupData    = 0;
+                        let garnirData  = 0;
+                        let skewerData  = 0;
+                        let drinkData   = 0;
+
+                        if(data.salad.length)
+                        {
+                                saladData = this.salads.filter(item => item.name == data.salad);
+
+                                saladData.forEach(element => {
+                                        saladData = element.id;
+                                });
+                        }
+                       
+
+                        if(data.soup.length)
+                        {
+                                soupData = this.soups.filter(item => item.name == data.soup);
+
+                                soupData.forEach(element => {
+                                        soupData = element.id;
+                                });
+                        }
+
+
+                        if(data.garnir.length)
+                        {
+                                garnirData = this.garnir.filter(item => item.name == data.garnir);
+
+                                garnirData.forEach(element => {
+                                        garnirData = element.id;
+                                });
+                        }
+
+
+                        if(data.skewer.length)
+                        {
+                                skewerData = this.skewer.filter(item => item.name == data.skewer);
+
+                                skewerData.forEach(element => {
+                                        skewerData = element.id;
+                                });
+                        }
+
+                        if(data.drink.length)
+                        {
+                                drinkData = this.drink.filter(item => item.name == data.drink);
+
+                                drinkData.forEach(element => {
+                                        drinkData = element.id;
+                                });
+                        }
+
+                        let curId = saladData + soupData + garnirData + skewerData + drinkData;
+
+                        let newData = 
+                        data.soup+"/ "
+                        +data.salad+"/ "
+                        +data.garnir+"/ "
+                        +data.skewer+"/ "
+                        +data.drink;
+
+                        this.formData.id                = curId;
+                        this.formData.description       = newData;
+                        //console.log(this.formData);            
                 }
         },
         mounted(){

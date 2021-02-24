@@ -116,17 +116,7 @@
             </v-list-item-avatar>
             <div v-for="item in drink_data"
                 :key="item.name" >
-              <v-container fluid >
-                 <!-- <input v-model="formData.drink" type="hidden" :value="item.id"> -->
-                 <v-input
-                   
-                    v-model="formData.drinkId" :value="item.id"
-                  >
-                  {{item.id}}
-                  </v-input>
-
-                  
-                  
+              <v-container fluid >                                  
                   <v-radio-group v-model="formData.drink">
                   <v-radio
                     color="teal"
@@ -178,17 +168,13 @@ export default {
     data(){
       return {
          formData: {
-           id:        0,
+           name:      '',
+           price:     '',
            salad:     '',
-           saladId:   0,
            soup:      '',
-           soupId:    0,
            garnir:    '',
-           garnirId:  0,
            skewer:    '',
-           skewerId:  0,
-           drink:     '',
-           drinkId:   0,           
+           drink:     '',           
          }
       }
     },
@@ -235,12 +221,14 @@ export default {
         },
         backPage()
         {
+          for(let key in this.formData)
+          {
+            this.formData[key] = '';
+          }
           this.$emit('backPage', 1);
         },
         addFormData()
         {
-          console.log('in add func');
-          console.log(this.formData.drinkId);
           this.$emit('addFormData', this.formData);
         },
     },
