@@ -8,6 +8,9 @@ export default{
     SET_DOPPRODUCTS_TO_STATE: (state, dopProducts) => {
         state.dopProducts = dopProducts;
     },
+    SET_CALC_RESULT: (state, calcResultData) =>{
+        state.calcResultData.push(calcResultData);
+    },
     SET_CART: (state, product) => {
     let isProductExists = false;
         if (state.cart.length) {

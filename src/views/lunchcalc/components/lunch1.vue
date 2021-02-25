@@ -1,17 +1,23 @@
 <template>
   <v-card>
-    <v-row>
-
+    
+      <!-- <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+      > -->
+ <v-row>
       <v-col v-if="salads_data.length">      
         <v-card min-width="230" max-width="300px">
           <v-list-item-avatar size="40">
             <v-img src="../../../assets/salad.svg" color="green">
             </v-img>
           </v-list-item-avatar>
+          <v-card-text class="green--text"> Выберите салат </v-card-text>
           <div v-for="item in salads_data"
               :key="item.name" >
             <v-container fluid >            
-                <v-radio-group v-model="formData.salad">
+                <v-radio-group v-model="formData.salad" :rules="[v => !!v || 'Выберите один из продуктов']" required>
                 <v-radio
                   color="success"
                   :value="item.name"
@@ -34,10 +40,11 @@
             <v-img src="../../../assets/soup.svg">
             </v-img>
           </v-list-item-avatar>
+          <v-card-text class="orange--text">Выберите суп</v-card-text>
           <div v-for="item in soups_data"
               :key="item.name" >
             <v-container fluid >
-                <v-radio-group v-model="formData.soup">
+                <v-radio-group v-model="formData.soup" :rules="[v => !!v || 'Выберите один из продуктов']" required>
                 <v-radio
                   color="orange"
                   :value="item.name"
@@ -60,13 +67,15 @@
             <v-img src="../../../assets/garnir.svg">
             </v-img>
           </v-list-item-avatar>
+          <v-card-text class="deep-orange--text">Выберите гарнир</v-card-text>
           <div v-for="item in garnir_data"
               :key="item.name" >
             <v-container fluid >
-                <v-radio-group v-model="formData.garnir">
+                <v-radio-group v-model="formData.garnir"  :rules="[v => !!v || 'Выберите один из продуктов']" required>
                 <v-radio
                   color="deep-orange"
                   :value="item.name"
+                 
                 >
                   <template v-slot:label>
                     <input type="hidden" :value="item.id">
@@ -86,6 +95,7 @@
             <v-img src="../../../assets/skewer.svg">
             </v-img>
           </v-list-item-avatar>
+          <v-card-text class="red--text">Выберите шашлык</v-card-text>
           <div v-for="item in skewer_data"
               :key="item.name" >
             <v-container fluid >
@@ -110,10 +120,12 @@
 
       <v-col>  
           <v-card min-width="230" max-width="300px">
+            
             <v-list-item-avatar size="40">
               <v-img src="../../../assets/tea.svg">
               </v-img>
             </v-list-item-avatar>
+            <v-card-text class="teal--text">Выберите напиток</v-card-text>
             <div v-for="item in drink_data"
                 :key="item.name" >
               <v-container fluid >                                  
@@ -136,10 +148,10 @@
             
           </v-card> 
       </v-col>
+ </v-row> 
+      <!-- </v-form> -->
 
-     
-
-    </v-row> 
+   
     <div>
         <v-btn
         color="primary"
@@ -164,18 +176,19 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
     data(){
       return {
          formData: {
-           name:      '',
-           price:     '',
            salad:     '',
            soup:      '',
            garnir:    '',
            skewer:    '',
            drink:     '',           
-         }
+         },
+         //valid: true,
       }
     },
     props: {
@@ -214,10 +227,15 @@ export default {
        
     },
     methods: {
+        ...mapActions([
+          'ADD_TO_CALC_RESULT',
+        ]),
+
         nextPage()
         {
+          // if(this.validate())
           this.addFormData();
-          this.$emit('nextPage');
+            this.$emit('nextPage');
         },
         backPage()
         {
@@ -229,7 +247,11 @@ export default {
         },
         addFormData()
         {
-          this.$emit('addFormData', this.formData);
+          //this.ADD_TO_CALC_RESULT(this.formData);
+            this.$emit('addFormData', this.formData);
+        },
+        validate() {
+            this.$refs.form.validate();
         },
     },
 }

@@ -20,6 +20,7 @@ let store = new Vuex.Store({
     cart: [],
     orderId : 0,
     dopProducts: [],
+    calcResultData: [],
   },
   mutations,
   actions,

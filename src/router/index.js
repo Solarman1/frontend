@@ -11,6 +11,7 @@ import LunchCalc from '../views/lunchcalc/calc.vue'
 import PaymentInfo from '../views/Paymentinfo.vue'
 import Confidance from '../views/Confidencpolitic.vue'
 import Userpolitic from '../views/Userpolitic.vue'
+import Actions from '../views/Actions.vue'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,11 @@ Vue.use(VueMeta);
     name: 'ProductMenu',
     component: ProductMenu,
     props: true
+  },
+  {
+    path: '/actions',
+    name: 'Actions',
+    component: Actions,
   },
   {
     path: '/productPage',

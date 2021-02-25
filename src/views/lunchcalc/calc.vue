@@ -159,7 +159,7 @@
           
         >
         <v-card-text class="black--text"><h2>Обед готов</h2></v-card-text>
-
+      
         <v-simple-table>
                 <template v-slot:default>
                 <thead>
@@ -356,13 +356,15 @@ export default {
         },
         computed: {
                 ...mapGetters([
-                'CART'
+                        'CART',
+                        'CALCRESULT'
                 ]),      
 
         },
         methods:{
                 ...mapActions([
-                        'ADD_TO_CART'
+                        'ADD_TO_CART',
+                        'ADD_TO_CALC_RESULT',
                 ]),
 
                 addToCart(data){

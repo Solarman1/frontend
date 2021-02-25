@@ -61,7 +61,7 @@
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item to='/' link>
+                <v-list-item to='/actions' link>
                   <v-list-item-action>
                     <v-icon>mdi-gift</v-icon>
                   </v-list-item-action>

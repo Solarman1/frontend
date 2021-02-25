@@ -73,32 +73,8 @@ export default {
       drawerChange(){
           eventEmitter.$emit('changeDrawer');
       },      
-    },
-    // mounted() {
-    //   this.ADD_TO_CART()
-    //   .then((response)=> 
-    //   {
-    //     if(response)
-    //     {
-    //       console.log('up to cart'+response);
-    //     }
-    //   })
-    // },   
+    }, 
 }
 </script>
 <style>
-/* .time {
-  font-size: 12px;
-}
-.timeTwo {
-  font-size: 8px;
-}
-@media (min-width: 900px) {
-  .time{
-  font-size: 18px;
-  }
-  .timeTwo {
-  font-size: 14px;
-  }
-} */
 </style>

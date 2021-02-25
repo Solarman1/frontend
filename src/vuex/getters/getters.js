@@ -11,6 +11,9 @@ export default {
     CART(state){
         return state.cart;
     },
+    CALCRESULT(state){
+        return state.calcResultData;
+    },
     ORDERID(state){
         return state.orderId;
     },
