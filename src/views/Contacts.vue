@@ -10,7 +10,7 @@
     </v-img>
 
     <v-card-subtitle class="pb-0"></v-card-subtitle>
-    <v-card-text><span class="  black--text mr-6" >Часы работы: </span>
+    <v-card-text><span class=" black--text mr-6" >Часы работы: </span>
       <span class="  black--text mr-15" > <p class="timeTwo ">Волочаевская 19/4 - 24 часа <br> Карла Либкнехта 6 - 10:00 - 00:00 </p> </span>
       </v-card-text>
     <v-card-text class="text--primary">

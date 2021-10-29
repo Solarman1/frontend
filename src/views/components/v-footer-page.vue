@@ -14,21 +14,23 @@
       <v-card-text >
         <v-spacer></v-spacer>
 
+       
         <v-btn
           class="mx-4"
-          dark
+         
           icon
         >
-          <a href="https://vk.com/ochag55" target="_blank"><v-icon size="24px">mdi-vk</v-icon></a>
+          <a href="https://www.instagram.com/ochag_55/" target="_blank"><img src="../../assets/inst-icon.svg" width="30" height="30" /></a>
+        </v-btn>
+
+         <v-btn
+          class="mx-4"
+          amber
+          icon
+        >
+          <a href="https://vk.com/ochag55" target="_blank"><img src="../../assets/vk-icon2.svg" width="30" height="30" /></a>
         </v-btn>
         
-        <v-btn
-          class="mx-4"
-          dark
-          icon
-        >
-          <a href="https://www.instagram.com/ochag_55/" target="_blank"><v-icon size="24px">mdi-instagram</v-icon></a>
-        </v-btn>
       </v-card-text>
  <router-link to="/confidance" >Политика конфиденциальности </router-link>
  <br>
@@ -42,6 +44,8 @@
     </v-footer>
 </template>
 <script>
+
+
 export default {
     name: "v-footer-page",
 

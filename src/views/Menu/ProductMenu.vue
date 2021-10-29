@@ -2,6 +2,17 @@
  <div class="categoryMeny">
          <v-container fluid> 
             <v-row dense>
+
+            <v-overlay
+              :opacity="1"
+              :value="overlay"
+            >
+                <v-progress-circular
+                  indeterminate
+                  color="amber"
+                ></v-progress-circular>
+            </v-overlay>
+
                 <v-col
                 xs="2"
                 v-for="products in productItems"
@@ -32,6 +43,8 @@ export default {
     data() {
         return {
           messages: [],
+          overlay: true,
+
         }
 
     },
@@ -62,14 +75,17 @@ export default {
         })
       },
     },
+
     mounted() {
       if (!this.PRODUCTS.length) {
         this.GET_PRODUCTS_FROM_API();
         // console.log('this route -> ');
-        // console.log(this.$route.query.product);
-
-      }      
-    }
+        // console.log(this.$route.query.product)
+      } 
+      if (this.PRODUCTS) {
+        setTimeout(() => {this.overlay = false}, 2000);
+      } 
+    },
   }
 </script>
 

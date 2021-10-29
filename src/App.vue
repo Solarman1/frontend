@@ -34,7 +34,7 @@ export default {
   name: 'App',
   metaInfo: {
       // if no subcomponents specify a metaInfo.title, this title will be used
-      title: 'Кафе-Бистро Очаг',
+      //title: 'Кафе-Бистро Очаг',
       // all titles will be injected into this template
       titleTemplate: '%s | Доставка еды 24 часа',  
        meta: [

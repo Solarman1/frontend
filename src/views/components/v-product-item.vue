@@ -23,7 +23,7 @@
 
           </v-card-text>
         <v-card-subtitle>
-          {{product_data.weight}}
+          <strong class="black--text text-h6 --lighten-1">{{product_data.weight}}</strong>
         </v-card-subtitle>
           <v-card-text>         
                 <v-card-title 

@@ -1,5 +1,5 @@
 <template>
-    <div class="categoryMeny ">
+    <div v-cloak class="categoryMeny ">
          <!-- <v-img
               src='../../assets/meat.gif'
               height="300px"
@@ -15,31 +15,23 @@
             <div class="menuTitle"><h2> Меню</h2> </div>
           </v-card>
      
-         <v-container fluid>
-            
+          <v-container fluid>   
             <v-row dense>
-             <!-- <v-overlay
-              :opacity="1"
-              :value="overlay"
-            >
-              <v-progress-circular indeterminate size="64">
-                Loading...
-              </v-progress-circular>
-            </v-overlay> -->
+                <v-col v-for="categorys in CATEGORYS" :key="categorys.id"> 
+                  <v-category-item :category_data="categorys" />
+                </v-col> 
+            </v-row>   
+          </v-container>
 
-
-                <v-col
-                
-                v-for="categorys in CATEGORYS"
-                        :key="categorys.id"
-                        
-                > 
-                <v-category-item  
-                     :category_data="categorys"   
-                />
-            </v-col> 
-        </v-row>   
-    </v-container>
+          <v-overlay
+            :opacity="1"
+            :value="overlay"
+          >
+              <v-progress-circular
+                indeterminate
+                color="amber"
+              ></v-progress-circular>
+          </v-overlay>
     </div>
 </template>
 <script>
@@ -55,6 +47,10 @@ export default {
             overlay: true,
         }
     },
+
+    created: function () {
+     
+    },
     computed:{
       ...mapGetters([
         'CATEGORYS',
@@ -66,9 +62,9 @@ export default {
       ]),
     },
     mounted() {
-        if (!this.CATEGORYS.length) {
-          this.GET_CATEGORYS_FROM_API();
-          this.overlay = false;
+      if(this.CATEGORYS)
+      {
+        setTimeout(() => {this.overlay = false}, 2000);
       }
     }
 }
@@ -76,5 +72,8 @@ export default {
 <style scoped>
 .menuTitle{
   font-size: 25px;
+}
+[v-cloak] {
+    display: none;
 }
 </style>
