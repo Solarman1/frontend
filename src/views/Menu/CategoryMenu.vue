@@ -18,7 +18,7 @@
           <v-container fluid>   
             <v-row dense>
                 <v-col v-for="categorys in CATEGORYS" :key="categorys.id"> 
-                  <v-category-item :category_data="categorys" />
+                  <v-category-item  ref="example-element" :category_data="categorys"  @overlay="onOverlay"/>
                 </v-col> 
             </v-row>   
           </v-container>
@@ -60,12 +60,28 @@ export default {
       ...mapActions([
         'GET_CATEGORYS_FROM_API',
       ]),
+      onOverlay(data){
+        // console.log('child component said - ', data.count);
+        this.overlay = data.overlay;
+        
+      }
     },
     mounted() {
       if(this.CATEGORYS)
       {
-        setTimeout(() => {this.overlay = false}, 2000);
+        // console.log(this.$el);
+        // setTimeout(() => {this.overlay = false}, 2000);
       }
+    },
+    updated() {
+      console.log(`At this point, Virtual DOM has re-rendered and patched.`)
+      // Fired every second, should always be true
+      if(this.$refs['example-element'])
+      {
+        //console.log(this.$refs['example-element']);
+        this.overlay = false;
+      }
+
     }
 }
 </script>

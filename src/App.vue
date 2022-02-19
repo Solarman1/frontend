@@ -64,6 +64,12 @@ export default {
       },
     },
     mounted(){},
+      updated: function () {
+     
+                  console.log(`11 At this point, Virtual DOM has re-rendered and patched.`)
+
+
+    }
     
 
 };

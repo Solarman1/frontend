@@ -33,7 +33,9 @@
       category_data: {
         type: Object,
         default() {
-            return {}
+            return {
+              count: 0,
+            }
         }
       }
     },
@@ -41,7 +43,32 @@
       return {
       }
     },
-    computed: {}
+    mounted() {
+      // if(this.$el)
+      // {
+      // let counter = 0;
+
+      //   this.count = counter + 1;
+      //   console.log('count - ', this.$el);
+      //   this.$emit('overlay', {
+      //     overlay : false,
+      //     count: this.count,
+      //     });
+
+
+      // }
+    },
+    updated: function () {
+     
+                  console.log(`11 At this point, Virtual DOM has re-rendered and patched.`)
+
+
+    },
+    
+    created(){
+   
+    }
+
   }
     
 </script>
