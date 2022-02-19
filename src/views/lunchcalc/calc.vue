@@ -39,7 +39,7 @@
         <a @click="openCalc(1), e1 = 2" >
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
-                Комплекс 1  <v-spacer></v-spacer> <div class="green--text text--lighten-1">190 руб.</div>
+                Комплекс 1  <v-spacer></v-spacer> <div class="green--text text--lighten-1">220 руб.</div>
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">
@@ -61,7 +61,7 @@
         <a @click="openCalc(2), e1 = 2">
         <v-card min-width="230" max-width="300px">
             <v-card-title>
-                Комплекс 2 <v-spacer></v-spacer> <div class="green--text text--lighten-1"> 250 руб. </div>
+                Комплекс 2 <v-spacer></v-spacer> <div class="green--text text--lighten-1"> 280 руб. </div>
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">
@@ -89,7 +89,7 @@
         <a @click="openCalc(3), e1 = 2"> 
         <v-card min-width="230" max-width="300px">
             <v-card-title>
-                Комплекс 3   <v-spacer></v-spacer> <div class="green--text text--lighten-1">280 руб.</div>
+                Комплекс 3   <v-spacer></v-spacer> <div class="green--text text--lighten-1">310 руб.</div>
             </v-card-title>
                     <v-list-item-avatar size="40">
                             <v-img src="../../assets/soup.svg">
@@ -115,7 +115,7 @@
         <a @click="openCalc(4), e1 = 2">
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
-                Комплекс 4  <v-spacer></v-spacer> <div class="green--text text--lighten-1">300 руб.</div> 
+                Комплекс 4  <v-spacer></v-spacer> <div class="green--text text--lighten-1">330 руб.</div> 
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">

@@ -44,12 +44,17 @@ export default {
     data(){
         return {
             drawer: null,
-            overlay: true,
+            overlay: true ,
         }
     },
 
     created: function () {
-     
+      if(this.CATEGORYS)
+      {
+        this.overlay = false
+        // console.log(this.$el);
+        // setTimeout(() => {this.overlay = false}, 2000);
+      }
     },
     computed:{
       ...mapGetters([
@@ -69,20 +74,18 @@ export default {
     mounted() {
       if(this.CATEGORYS)
       {
+        this.overlay = false
         // console.log(this.$el);
         // setTimeout(() => {this.overlay = false}, 2000);
       }
     },
-    updated() {
-      console.log(`At this point, Virtual DOM has re-rendered and patched.`)
-      // Fired every second, should always be true
-      if(this.$refs['example-element'])
-      {
-        //console.log(this.$refs['example-element']);
-        this.overlay = false;
-      }
-
-    }
+    updated: function () {
+        console.log('update');
+         this.overlay = false;
+      },
+    beforepdated: function () {
+         this.overlay = false;
+      },
 }
 </script>
 <style scoped>

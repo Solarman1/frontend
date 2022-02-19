@@ -9,31 +9,32 @@
       <router-link to="/" >
        <v-img
         max-height="150"
-        max-width="50"
+        max-width="45"
         src="../../assets/ochag_grill.webp"
         >
         </v-img>
       </router-link>
       <v-toolbar-title class="d-none d-lg-block ml-5 text-center white--text"> <router-link to="/" class="white--text"> Кафе-бистро Очаг </router-link> </v-toolbar-title>
       <a href="tel:+7(3812)472211" >
+        
        <v-img
        class="ml-5"
-        max-height="150"
-        max-width="50"
+        max-height="70"
+        max-width="40"
         src="../../assets/phone-icon.png"
         ></v-img></a>
         
       
-      <strong class="subheading  ml-5 text-h5 text-center text-decoration-none">
-       
-        <!--  <v-icon>mdi-phone</v-icon>--> <a href="tel:+7(3812)472211" > <span class="d-none d-lg-block white--text">+7(3812)47-22-11</span></a></strong> 
-        <v-spacer>  
-     </v-spacer>
+        <strong  class="subheading  ml-5 text-h6 text-center text-decoration-none">
+          <a href="tel:+7(3812)472211" > <span class="d-none d-lg-block white--text">+7(3812)47-22-11</span></a>
+        </strong> 
+      <v-spacer>  
+      </v-spacer>
 
        
       <v-spacer></v-spacer>
-      <span class="d-none d-lg-block  white--text mr-6" >Часы работы: </span>
-      <span class="d-none d-lg-block  white--text mr-15" > <p class="timeTwo ">Волочаевская 19/4 - 24 часа <br> Карла Либкнехта 6 - 10:00 - 00:00 </p> </span>
+      <span class="d-none d-sm-none d-md-none d-lg-flex white--text mr-6" >Часы работы: </span>
+      <span class="d-none d-sm-none d-md-none d-lg-flex white--text mr-15 mt-5" > <p class="timeTwo ">Волочаевская 19/4 - 24 часа <br> Карла Либкнехта 6 - 10:00 - 00:00 </p> </span>
        <v-btn icon x-large class="mr-15">
        <router-link :to="{name: 'Cart', params: {cart_data: CART}}">
           <v-icon>mdi-cart</v-icon>
