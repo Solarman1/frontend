@@ -15,13 +15,13 @@
         <v-spacer></v-spacer>
 
        
-        <v-btn
+        <!-- <v-btn
           class="mx-4"
          
           icon
         >
           <a href="https://www.instagram.com/ochag_55/" target="_blank"><img src="../../assets/inst-icon.svg" width="30" height="30" /></a>
-        </v-btn>
+        </v-btn> -->
 
          <v-btn
           class="mx-4"
