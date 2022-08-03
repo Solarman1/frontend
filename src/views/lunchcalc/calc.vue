@@ -378,28 +378,28 @@ export default {
                                         this.closeOtherLunch();
                                         this.formData.id    = 301;
                                         this.formData.name  = 'Комплекс 1';
-                                        this.formData.price = 190; 
+                                        this.formData.price = 220;
                                         this.lunch1 = true;
                                         break;
                                 case 2:
                                         this.closeOtherLunch();
                                         this.formData.id    = 302;
                                         this.formData.name  = 'Комплекс 2';
-                                        this.formData.price = 250; 
+                                        this.formData.price = 280;
                                         this.lunch2 = true;
                                         break;
                                 case 3: 
                                         this.closeOtherLunch();
                                         this.formData.id    = 303;
                                         this.formData.name  = 'Комплекс 3';
-                                        this.formData.price = 280; 
+                                        this.formData.price = 310;
                                         this.lunch3 = true;
                                         break;
                                 case 4:
                                         this.closeOtherLunch();
                                         this.formData.id    = 304;
                                         this.formData.name  = 'Комплекс 4';
-                                        this.formData.price = 300;
+                                        this.formData.price = 330;
                                         this.lunch4 = true;
                                         break;
                         }
