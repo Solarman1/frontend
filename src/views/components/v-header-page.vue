@@ -3,6 +3,7 @@
       app
       color="#15151d"
       dark
+      max-height="150"
     >
     
       <v-app-bar-nav-icon @click.stop="drawerChange"></v-app-bar-nav-icon>
@@ -26,15 +27,16 @@
         
       
         <strong  class="subheading  ml-5 text-h6 text-center text-decoration-none">
-          <a href="tel:+7(3812)472211" > <span class="d-none d-lg-block white--text">+7(3812)47-22-11</span></a>
+           <a href="tel:+7(3812)472211" > <span class="d-none d-lg-block white--text">  <span class="red--text">Служба доставки: </span>  +7(3812)47-22-11 <span class="red--text">Круглосуточно</span> </span></a> 
         </strong> 
+        
       <v-spacer>  
       </v-spacer>
 
        
       <v-spacer></v-spacer>
       <span class="d-none d-sm-none d-md-none d-lg-flex white--text mr-6" >Часы работы: </span>
-      <span class="d-none d-sm-none d-md-none d-lg-flex white--text mr-15 mt-5" > <p class="timeTwo ">Волочаевская 19/4 - 24 часа <br> Карла Либкнехта 6 - 10:00 - 00:00 </p> </span>
+      <span class="d-none d-sm-none d-md-none d-lg-flex white--text mr-15 mt-5" > <p class="timeTwo ">Волочаевская 19/4 - 24 часа <br> Карла Либкнехта 6\Гусарова, 33 к8 - 10:00 - 00:00 </p> </span>
        <v-btn icon x-large class="mr-15">
        <router-link :to="{name: 'Cart', params: {cart_data: CART}}">
           <v-icon>mdi-cart</v-icon>

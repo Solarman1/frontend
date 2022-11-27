@@ -456,6 +456,13 @@ export default {
       validate () {
 
           for (let i = 0; i < this.cart_data.length; i++) {
+
+            if(this.cart_data[i].isCalc !== null 
+            && this.cart_data[i].isCalc !== undefined 
+            && this.cart_data[i].isCalc === true) {
+              this.cart_data[i].name = this.cart_data[i].name + ' (' + this.cart_data[i].description + ')';
+            }
+
             this.resBasket[i] = {
               orderId: null,
               productId: this.cart_data[i].id,
