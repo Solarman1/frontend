@@ -1,8 +1,10 @@
 <template>
  <div class="categoryMeny">
+  
          <v-container fluid> 
+          
             <v-row dense>
-
+              
             <v-overlay
               :opacity="1"
               :value="overlay"
@@ -12,7 +14,6 @@
                   color="amber"
                 ></v-progress-circular>
             </v-overlay>
-
                 <v-col
                 xs="2"
                 v-for="products in productItems"
@@ -59,7 +60,7 @@ export default {
         return {
           messages: [],
           overlay: true,
-
+          alert: true,
         }
 
     },

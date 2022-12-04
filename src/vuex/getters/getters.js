@@ -26,5 +26,11 @@ export default {
         let result = total.reduce((sum, current) => sum + current, 0);
         //console.log(result);
         return result;
-    }   
+    },
+    ALERTVALUE(state){
+        return state.mainPageAlert;
+    },
+    MAINPAGEALERTVALUE(state) {
+        return state.alert;
+    }
 }

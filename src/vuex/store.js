@@ -21,6 +21,8 @@ let store = new Vuex.Store({
     orderId : 0,
     dopProducts: [],
     calcResultData: [],
+    mainPageAlert: true,
+    alert: true,
   },
   mutations,
   actions,

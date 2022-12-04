@@ -1,11 +1,6 @@
 <template>
     <div v-cloak class="categoryMeny ">
-         <!-- <v-img
-              src='../../assets/meat.gif'
-              height="300px"
-              >
-              
-        </v-img> -->
+      <v-main-page-alert-vue />
           <v-card
             class="pa-2"
             outlined
@@ -14,14 +9,15 @@
           >
             <div class="menuTitle"><h2> Меню</h2> </div>
           </v-card>
-     
-          <v-container fluid>   
+          <v-container fluid>
             <v-row dense>
                 <v-col v-for="categorys in CATEGORYS" :key="categorys.id"> 
                   <v-category-item  ref="example-element" :category_data="categorys"  @overlay="onOverlay"/>
                 </v-col> 
-            </v-row>   
+            </v-row>
           </v-container>
+
+
 
           <v-overlay
             :opacity="1"
@@ -37,14 +33,16 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import vCategoryItem from '../components/v-category-item.vue';
+import vMainPageAlertVue from '../components/v-main-page-alert.vue';
 
 export default {
-  components: { vCategoryItem },
+  components: { vCategoryItem, vMainPageAlertVue },
     name: "CategoryMenu",
     data(){
         return {
             drawer: null,
             overlay: true ,
+            alert: true,
         }
     },
 

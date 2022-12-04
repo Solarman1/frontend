@@ -28,8 +28,7 @@
 
 
   <iframe src="https://www.google.com/maps/d/embed?mid=17RREVn_a_BCFjCu94o5eMVm9AC2vsvhQ" width="70%" height="480"></iframe>
-    <v-img
-    >
+    <v-img>
       
     </v-img>
 

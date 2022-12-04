@@ -1,4 +1,13 @@
 export default{
+
+    SET_MAIN_PAGE_ALERT: (state, value) => {
+        state.mainPageAlert = value;
+    },
+
+    SET_ALERT_VALUE: (state, value) => {
+        state.alert = value;
+    },
+    
     SET_PRODUCTS_TO_STATE: (state, products) => {
         state.products = products;
     },
