@@ -54,7 +54,7 @@ export default {
      
     },
     data: () => ({
- 
+      
     }),
     
     computed:{},
@@ -62,6 +62,8 @@ export default {
       drawerChange(){
 
       },
+
+     
     },
     mounted(){},
       updated: function () {

@@ -38,7 +38,7 @@
                                 @click="routeToRolls()"
                                 style="margin-left:15px;"
                             >
-                                Посмотреть ролы
+                                Выбрать роллы
                             </v-btn>
                         </v-row>
                     </v-col>
