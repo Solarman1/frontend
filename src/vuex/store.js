@@ -17,6 +17,7 @@ let store = new Vuex.Store({
     isDesktop: true,
     categorys: [],
     products: [],
+    calcs: [],
     cart: [],
     orderId : 0,
     dopProducts: [],

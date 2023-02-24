@@ -11,6 +11,9 @@ export default {
     CART(state){
         return state.cart;
     },
+    CALCS(state){
+        return state.calcs;
+    },
     CALCRESULT(state){
         return state.calcResultData;
     },

@@ -4,8 +4,7 @@
         tile>
        <h2 class="text-center "> Конструктор бизнес-ланча </h2> 
        <h3  >По будням с 12:00 - 16:00 </h3> 
-
-
+       
           <v-stepper v-model="e1">
                 <v-stepper-header>
                         <v-stepper-step
@@ -39,7 +38,8 @@
         <a @click="openCalc(1), e1 = 2" >
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
-                Комплекс 1  <v-spacer></v-spacer> <div class="green--text text--lighten-1">240 руб.</div>
+                Комплекс 1  <v-spacer></v-spacer> 
+                <div class="green--text text--lighten-1">{{CALCS[0] ? CALCS[0].price : ""}} руб.</div>
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">
@@ -61,7 +61,8 @@
         <a @click="openCalc(2), e1 = 2">
         <v-card min-width="230" max-width="300px">
             <v-card-title>
-                Комплекс 2 <v-spacer></v-spacer> <div class="green--text text--lighten-1"> 300 руб. </div>
+                Комплекс 2 <v-spacer></v-spacer> 
+                <div class="green--text text--lighten-1"> {{CALCS[1] ? CALCS[1].price : ""}} руб.</div>
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">
@@ -89,7 +90,8 @@
         <a @click="openCalc(3), e1 = 2"> 
         <v-card min-width="230" max-width="300px">
             <v-card-title>
-                Комплекс 3   <v-spacer></v-spacer> <div class="green--text text--lighten-1">340 руб.</div>
+                Комплекс 3   <v-spacer></v-spacer> 
+                <div class="green--text text--lighten-1">{{CALCS[2] ? CALCS[2].price : ""}} руб.</div>
             </v-card-title>
                     <v-list-item-avatar size="40">
                             <v-img src="../../assets/soup.svg">
@@ -115,7 +117,10 @@
         <a @click="openCalc(4), e1 = 2">
         <v-card min-width="230" max-width="300px" >
             <v-card-title>
-                Комплекс 4  <v-spacer></v-spacer> <div class="green--text text--lighten-1">380 руб.</div> 
+                Комплекс 4  
+                <v-spacer></v-spacer> 
+                <div class="green--text text--lighten-1">{{CALCS[3] ? CALCS[3].price : ""}} руб.</div>
+                
             </v-card-title>
              <v-list-item-avatar size="40">
                             <v-img src="../../assets/salad.svg">
@@ -201,7 +206,6 @@
         >
                 Назад
         </v-btn>
-
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
@@ -369,7 +373,8 @@ export default {
         computed: {
                 ...mapGetters([
                         'CART',
-                        'CALCRESULT'
+                        'CALCRESULT',
+                        'CALCS'
                 ]),      
 
         },
@@ -377,12 +382,14 @@ export default {
                 ...mapActions([
                         'ADD_TO_CART',
                         'ADD_TO_CALC_RESULT',
+                        'GET_LUNCHCALCS_FROM_API',
                 ]),
 
                 addToCart(data){
+                        ++data.id;
                         this.ADD_TO_CART(data);
+                        this.backPage(1);
                 },
-
                 openCalc(lunchType){
                         switch(lunchType)
                         {
@@ -390,28 +397,28 @@ export default {
                                         this.closeOtherLunch();
                                         this.formData.id    = 301;
                                         this.formData.name  = 'Комплекс 1';
-                                        this.formData.price = 220;
+                                        this.formData.price = this.CALCS[0].price;
                                         this.lunch1 = true;
                                         break;
                                 case 2:
                                         this.closeOtherLunch();
                                         this.formData.id    = 302;
                                         this.formData.name  = 'Комплекс 2';
-                                        this.formData.price = 280;
+                                        this.formData.price = this.CALCS[1].price;
                                         this.lunch2 = true;
                                         break;
                                 case 3: 
                                         this.closeOtherLunch();
                                         this.formData.id    = 303;
                                         this.formData.name  = 'Комплекс 3';
-                                        this.formData.price = 310;
+                                        this.formData.price = this.CALCS[2].price;
                                         this.lunch3 = true;
                                         break;
                                 case 4:
                                         this.closeOtherLunch();
                                         this.formData.id    = 304;
                                         this.formData.name  = 'Комплекс 4';
-                                        this.formData.price = 330;
+                                        this.formData.price = this.CALCS[3].price;
                                         this.lunch4 = true;
                                         break;
                         }
@@ -503,7 +510,15 @@ export default {
                 }
         },
         mounted(){
-            this.$set(this.formData, 'quantity', 1);
+                this.GET_LUNCHCALCS_FROM_API().then((response)=>{
+                        if(response.data)
+                        {
+                                // console.log(response.data);
+                        }
+                }),
+                
+                this.$set(this.formData, 'quantity', 1);
+        
         },
 }
 </script>

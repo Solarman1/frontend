@@ -14,7 +14,6 @@ export default {
     DELETE_FROM_CART({commit}, index) {
       commit('REMOVE_FROM_CART', index)
     },
-    
     SET_MAIN_PAGE_ALERT({commit}, index) {
       commit('SET_MAIN_PAGE_ALERT', index)
     },

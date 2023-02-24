@@ -44,5 +44,16 @@ export default{
             console.log(error);
             return error;
         })
+    },
+    GET_LUNCHCALCS_FROM_API({commit}){
+        return axios(`https://api.ochag55.ru/api/calcs`, {
+            method: "GET"
+        }).then((calcs) => {
+            commit('SET_CALCS_TO_STATE', calcs.data);
+            return calcs;
+        }).catch((error) => {
+            console.log(error);
+            return error;
+        })
     }
 }

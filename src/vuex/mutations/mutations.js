@@ -1,13 +1,12 @@
 export default{
 
+
     SET_MAIN_PAGE_ALERT: (state, value) => {
         state.mainPageAlert = value;
     },
-
     SET_ALERT_VALUE: (state, value) => {
         state.alert = value;
     },
-    
     SET_PRODUCTS_TO_STATE: (state, products) => {
         state.products = products;
     },
@@ -16,6 +15,9 @@ export default{
     },
     SET_DOPPRODUCTS_TO_STATE: (state, dopProducts) => {
         state.dopProducts = dopProducts;
+    },
+    SET_CALCS_TO_STATE: (state, calcs) => {
+        state.calcs = calcs;
     },
     SET_CALC_RESULT: (state, calcResultData) =>{
         state.calcResultData.push(calcResultData);
