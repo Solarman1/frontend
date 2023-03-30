@@ -9,12 +9,10 @@
                 :value="MAINPAGEALERTVALUE"
                 color="yellow"
                 border="top"
-                transition="scale-transition"
-                width="100%"
                 >
 
-                <v-row>
-                    <v-col>
+                <v-row >
+                    <v-col width="100%">
                             <h2>Наши суши берут за душу! </h2> 
                         <p>Кто попробует-тот полюбит! Новые ролы и суши от «Очага» покорят ваш желудок!</p>
                         <p>Только на доставку и самовывоз с ул.Гусарова, 33/8 (наша доставка)</p> 
@@ -43,14 +41,18 @@
                             </v-btn>
                         </v-row>
                     </v-col>
+                    
+                    <div>
+                        <v-col>
+                            <v-img
+                            max-height="250"
+                            max-width="290"
+                            min-width="200"
+                            src="../../assets/sushi.jpg"
+                            ></v-img>
+                        </v-col>
+                    </div>
 
-                    <v-col style="margin-left:65px;">
-                        <v-img
-                        max-height="250"
-                        max-width="350"
-                        src="../../assets/sushi.jpg"
-                        ></v-img>
-                    </v-col>
                 </v-row>
             </v-alert>
         </v-dialog> 
