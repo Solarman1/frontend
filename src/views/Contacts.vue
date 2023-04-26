@@ -13,7 +13,7 @@
         <div>mail: <a href="mailto: ochag.55omsk@gmail.com">ochag.55omsk@gmail.com</a> </div>
       </v-card-text>
     </v-col>
-    <v-col>
+    <!-- <v-col>
       <v-card-text class="text--primary">
         <h3>Контакты для сотрудничества</h3>
         <p>Служба подбора персонала</p>
@@ -21,7 +21,7 @@
         <p>Выездное обслуживание</p>
         <div>телефон: <a href="tel:+7(3812)472211">+7 903 981 8387</a></div>
       </v-card-text>
-    </v-col>
+    </v-col> -->
   </v-row>
 
 

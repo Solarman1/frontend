@@ -71,6 +71,7 @@
 
             <template>
               <v-form
+                    onsubmit="ym(93339522, 'reachGoal', 'order'); return true;"
                     ref="form"
                     v-model="valid"
                     lazy-validation
