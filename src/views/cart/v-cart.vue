@@ -321,10 +321,10 @@
                         <v-card>
 
                         <v-card-title class="Успешно">
-                          Заказ успешно офрмлен
+                          Заказ успешно оформлен
                         </v-card-title>
                           <form action="https://www.ochag55.ru/">
-                            <v-card-text>В ближайшее время с вами свяжется оператор для потверждения заказа.</v-card-text>
+                            <v-card-text>В ближайшее время с вами свяжется оператор для подтверждения заказа.</v-card-text>
                               <v-card-actions>
                               <v-spacer></v-spacer>
                                 <v-btn
